@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+ <meta charset="utf-8" />
+ <title>Demo: Accessible modal tooltip using ARIA and Vanilla Javascript - Van11y </title>
+ 
+<link href="./styles_1567325714.css" rel="stylesheet" media="all" />
+
+<meta name="description" content="This script will create a fantastic-shiny accessible modal tooltip, using ARIA" />
+<meta name="keywords" content="collection, accessibility, scripts, projects, modal, tooltip, tab panel, accordion, hide/show, customisable" />
+
+<meta property="og:type" content="website" />
+<!-- Open Graph Meta Data -->
+<meta property="og:title" content="Demo: Accessible modal tooltip using ARIA and Vanilla Javascript - Van11y" />
+<meta property="og:description" content="This script will create a fantastic-shiny accessible modal tooltip, using ARIA." />
+<meta property="og:image" content="https://van11y.net/apple-touch-icon_1471815930.png" />
+<meta property="og:url" content="https://van11y.net/accessible-modal-tooltip/" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="https://van11y.net/accessible-modal-tooltip/" />
+<meta name="twitter:title" content="Demo: Accessible modal tooltip using ARIA and Vanilla Javascript - Van11y" />
+<meta name="twitter:description" content="This script will create a fantastic-shiny accessible modal tooltip, using ARIA." />
+<meta name="twitter:image" content="https://van11y.net/apple-touch-icon_1471815930.png" />
+<meta name="twitter:site" content="Van11y" />
+<meta name="twitter:creator" content="Van11y" />
+
+<meta name="robots" content="index, follow" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" href="./css/mss.css" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i" rel="stylesheet" type="text/css">
+<script src="./js/jquery-3.4.1.slim.min.js"></script>
+
+</head>
+<body role="document">
+
+
+<div id="page" class="mw960e" role="main">
+
+ <!-- Routing Number:	3222 81507	Account Number:	3407 479 713 -->
+	<div class="calpers-grid">
+            <div id="modal-button" class="component-demo">
+                <h2>Modal Button</h2>
+                <p>
+                    <button 
+                        class="js-modal button mycal-button" 
+                        data-modal-prefix-class="mycal"
+                        data-modal-content-id="modal-content-01"
+                        data-modal-title="Modal Button"
+                        data-modal-close-text="Close"
+                        data-tooltip-close-title=""
+                        data-modal-focus-toid="modal-sample-h2-focus"
+                        aria-haspopup="dialog">Regular Modal Button</button>
+                    <button 
+                        class="js-modal button mycal-button" 
+                        data-modal-prefix-class="mycal"
+                        data-modal-content-id="modal-content-radio-form"
+                        data-modal-title="Verify Your Financial Institution"
+                        data-modal-close-text="Close"
+                        data-modal-close-title=" "
+                        data-modal-focus-toid="modal-form-id-1"
+                        aria-haspopup="dialog">Modal Button opens Radio Button Form</button>
+                    <button 
+                        class="js-modal button mycal-button" 
+                        data-modal-prefix-class="mycal"
+                        data-modal-content-id="modal-content-input-text"
+                        data-modal-title="Save Estimate"
+                        data-modal-close-text="Close"
+                        data-modal-close-title=" "
+                        data-modal-focus-toid="modal-form-id-2"
+                        aria-haspopup="dialog">Modal Button opens Input Text Form</button>
+
+
+                <div id="modal-content-01" class="mycal-hide">
+
+                    <div class="mycal-modal-content-text">
+
+                        <h2 id="modal-sample-h2-focus" tabindex="-1">Subhead H2</h2>
+
+                        <p>Duis aute irure <a href="#">dolor in reprehenderit</a> in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                        <img src="img/svgs/mss-check-routing.svg">
+
+                        <p>Duis aute irure <a href="#">dolor in reprehenderit</a> in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                        <h3>Subhead H3</h3>
+
+                        <ul>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                            <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                        </ul>
+
+                        <h4>Subhead H4</h4>
+
+                        <ol>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                            <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                        </ol>
+
+                        <h5>Subhead H5</h5>
+
+                        <p>Example of a table in a tooltip:</p>
+
+                        <table>
+                            <tr>
+                                <th>Latin</th>
+                                <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+                            </tr>
+                            <tr>
+                                <th>Greek</th>
+                                <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+                            </tr>
+                        </table>
+
+                        <h6>Subhead H6</h6>
+
+                        <p>Duis aute irure <a href="#">dolor in reprehenderit</a> in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    </div>
+                </div>
+
+
+                <div id="modal-content-radio-form" class="mycal-hide">
+
+                    <form id="modal-form-id-1" tabindex-"-1" class="calpers-form calpers-form-modal" action="." method="post">
+                        <p>Based on the routing number you've entered, we have identified your financial institution as the following:</p>
+                        <fieldset>
+
+                            <legend>Financial Institution Name Match</legend>
+
+                            <p>This is a form with a fieldset and a legend element.</p>
+
+                            <div class="field">
+                                <ul class="mycal-list-input-check-radio">
+                                    <li><label for="sel0" class="mycal-radio-label">
+                                    <input id="sel0" 
+                                           name="selectedFinancialInstitutionIndex" 
+                                           class="mycal-radio-input" 
+                                           type="radio" value="0" 
+                                           checked="checked" />
+                                    Mission Federal Credit Union </label></li>
+                                    <li><label for="sel1" class="mycal-radio-label">
+                                    <input id="sel1" 
+                                           name="selectedFinancialInstitutionIndex" 
+                                           class="mycal-radio-input" 
+                                           type="radio" value="1" 
+                                           />
+                                    Mission Federal Credit Union v2 </label></li>                            
+                                </ul>
+                            </div>
+
+                            <div class="calpers-buttons">
+                                <button type="button" class="button mycal-button">Confirm</button>
+                                <button type="button" class="button mycal-button-secondary js-modal-close">Close</button>
+                            </div>
+
+                        </fieldset>
+
+                    </form>
+
+                </div>
+
+
+                <div id="modal-content-input-text" class="mycal-hide">
+
+                    <form id="modal-form-id-2" tabindex="-1" class="calpers-form calpers-form-modal" action="." method="post">
+
+                        <div class="field">
+                            <label for="saveEstimateName" required="true">Estimate Name <span class="required">(required)</span></label>
+                            <input id="saveEstimateName" class="mycal-input" onkeyup="submitButtonStatusSave();" onblur="requiredTextFieldValidation(this);" name="saveEstimateName" type="text" value="" size="30" maxlength="50" aria-describedby="saveEstimateName_fldErrorRequired">
+                            <div id="saveEstimateName_fldErrorRequired" class="fieldErrorMessage" aria-live="polite" aria-atomic="true">
+                                Enter the required field: Estimate Name
+                            </div>
+                        </div>
+
+                        <div class="calpers-buttons">
+                            <button type="button" class="button mycal-button" disabled="disabled" aria-disabled="true">Save</button>
+                            <button type="button" class="button mycal-button-secondary js-modal-close">Close</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+		<div id="tooltip-button" class="component-demo">
+			<h2>Tooltip Link</h2>
+    
+			 <p><a href="#username-help" class="js-tooltip" data-tooltip-prefix-class="mycal" data-tooltip-content-id="username-help" data-tooltip-title="What is Username?" data-tooltip-focus-toid="mycal-tooltip-content" data-tooltip-close-text="Close" data-tooltip-close-title="Close this dialog" id="label_tooltipu362l9ddll">What is a Username?</a> </p>
+			         
+			  <div id="username-help" class="mycal-hide">
+				<div tabindex="0" id="mycal-tooltip-content">
+				   <p>A Username is an identification used by a person with access to a computer, network, or online service.</p> 
+
+				   <p>You can find your CalPERS ID on any letter you receive from CalPERS.</p>
+
+				   <p>It's a unique 10-digit number we assign to each member as an alternative to using your Social Security number when conducting business with CalPERS.</p>
+				</div>      
+			  </div>
+  
+		</div>
+  
+<div class="footer" role="contentinfo"><br>This demo is a demo of <a href="https://van11y.net/accessible-modal-tooltip/" class="link">Van11y Accessible modal tooltip using <abbr title="Accessible Rich Internet Applications">ARIA</abbr></a>.<br></div>
+
+</div>
+</div>
+<script src="./js/van11y-accessible-modal-window-aria.js"></script>
+<script src="./js/van11y-accessible-modal-tooltip-aria.js"></script>
+</body>
+</html>
