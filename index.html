@@ -50,6 +50,7 @@
                         data-modal-close-text="Close"
                         data-tooltip-close-title=""
                         data-modal-describedby-id="modal-focus"
+                        data-modal-focus-toid="focus-element"
                         aria-haspopup="dialog">Confirmation Modal</button>
                     <button 
                         class="js-modal button mycal-button" 
@@ -73,10 +74,10 @@
 
                 <div id="modal-content-01" class="mycal-hide">
 
-                    <div id="modal-focus" class="mycal-modal-content-text">
-                        <p>Are you sure? pidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="mycal-modal-content-text">
+                        <p id="modal-focus">Are you sure? pidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <div class="calpers-buttons">
-                            <button type="button" class="button mycal-button">Confirm</button>
+                            <button type="button" id="focus-element" class="button mycal-button">Confirm</button>
                             <button type="button" class="button mycal-button-secondary js-modal-close">Close</button>
                         </div>
                     </div>
