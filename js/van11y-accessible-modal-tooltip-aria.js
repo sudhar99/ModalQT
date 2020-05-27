@@ -1,7 +1,372 @@
-/**
- * van11y-accessible-modal-tooltip-aria - ES2015 accessible modal tooltip system, using ARIA (compatible IE9+ when transpiled)
- * @version v2.3.1
- * @link https://van11y.net/accessible-modal-tooltip/
- * @license MIT : https://github.com/nico3333fr/van11y-accessible-modal-tooltip-aria/blob/master/LICENSE
+/*
+ * ES2015 accessible modal tooltip system, using ARIA
+ * Website: https://van11y.net/accessible-modal-tooltip/
+ * License MIT: https://github.com/nico3333fr/van11y-accessible-modal-tooltip-aria/blob/master/LICENSE
  */
-"use strict";!function(t){function o(t){t.parentNode.removeChild(t)}var e="js-tooltip",i="label_tooltip",l="span",a="container",n="is-active",d="tooltip",s="data-tooltip-prefix-class",r="data-tooltip-text",c="data-tooltip-content-id",u="data-tooltip-title",p="data-tooltip-focus-toid",m="data-tooltip-close-text",f="data-tooltip-close-title",T="data-tooltip-close-img",g="dialog",b="p",v="tooltip__close",A="js-tooltip-close",C="js-tooltip-close",h="data-content-back-id",k="data-focus-back",I="tooltip__wrapper",x="tooltip__content",L="js-tooltip-content",B="tooltip__closeimg",_="modal-close__text",y="tooltip-title",M="tooltip__title",j="a[href], area[href], input:not([type='hidden']):not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]",E="js-dialogtooltip",P="js-dialogtooltip",N="role",w="open",F="aria-labelledby",H=function(o){return t.getElementById(o)},D=function(t,o){t.classList?t.classList.add(o):t.className+=" "+o},O=function(t,o){t.classList?t.classList.remove(o):t.className=t.className.replace(new RegExp("(^|\\b)"+o.split(" ").join("|")+"(\\b|$)","gi")," ")},S=function(t,o){return t.classList?t.classList.contains(o):new RegExp("(^| )"+o+"( |$)","gi").test(t.className)},q=function(t,o){t.parentNode.insertBefore(o,t),o.appendChild(t)},R=function(t,o){for(var e=!1,i=t.parentNode;i&&e===!1;)S(i,o)===!0?e=!0:i=i.parentNode;return e===!0?i.getAttribute("id"):""},$=function(t){var o=E,e=t.modalTooltipPrefixClass+d,i=t.modalTooltipPrefixClass+I,l=t.modalTooltipPrefixClass+v,a=t.modalTooltipCloseImgPath?'<img src="'+t.modalTooltipCloseImgPath+'" alt="'+t.modalTooltipCloseText+'" class="'+B+'" />':'<span class="'+_+'">\n'+t.modalTooltipCloseText+"\n</span>",n=t.modalTooltipPrefixClass+x,s=t.modalTooltipPrefixClass+M,r=""!==t.modalTooltipTitle?'<h1 id="'+y+'" class="'+s+'">\n'+t.modalTooltipTitle+"\n</h1>":"",c='<button type="button" class="'+C+" "+l+'" id="'+A+'" title="'+t.modalTooltipCloseTitle+'" '+h+'="'+t.modalTooltipContentId+'" '+k+'="'+t.modalTooltipFocusBackId+'">\n'+a+"\n</button>",u=t.modalTooltipText;if(""===u&&t.modalTooltipContentId){var p=H(t.modalTooltipContentId);p&&(u='<div id="'+L+'">\n'+p.innerHTML+"\n</div",p.innerHTML="")}else u="<"+b+">\n"+u+"\n</"+b+">";return'<dialog id="'+o+'" class="'+e+" "+P+'" '+N+'="'+g+'" '+w+" "+F+'="'+y+'">\n<div role="document" class="'+i+'">\n'+c+'\n<div class="'+n+'">\n '+r+"\n"+u+"\n</div>\n</div>\n</dialog>"},K=function(t){if(o(t.modalTooltip),""!==t.contentBackId){var e=H(t.contentBackId);e&&(e.innerHTML=t.modalTooltipContent)}if(t.modalTooltipFocusBackId){var i=H(t.modalTooltipFocusBackId);i&&i.focus()}},z=function(){var o=arguments.length<=0||void 0===arguments[0]?t:arguments[0];return[].slice.call(o.querySelectorAll("."+e))},G=function(o){var d=arguments.length<=1||void 0===arguments[1]||arguments[1];z(o).forEach(function(o){var e=Math.random().toString(32).slice(2,12),n=o.hasAttribute(s)===!0?o.getAttribute(s)+"-":"";o.setAttribute("id",i+e);var d=t.createElement(l);d.setAttribute("class",n+a),q(o,d)}),d&&["click","keydown"].forEach(function(o){t.body.addEventListener(o,function(t){S(t.target,e)===!0&&"click"===o&&S(t.target,n)===!1&&!function(){var o=t.target,e=o.hasAttribute(s)===!0?o.getAttribute(s)+"-":"",i=o.hasAttribute(r)===!0?o.getAttribute(r):"",l=o.hasAttribute(c)===!0?o.getAttribute(c):"",a=o.hasAttribute(u)===!0?o.getAttribute(u):"",d=o.hasAttribute(m)===!0?o.getAttribute(m):"",g=o.hasAttribute(f)===!0?o.getAttribute(f):d,b=o.hasAttribute(T)===!0?o.getAttribute(T):"",v=o.hasAttribute(p)===!0?o.getAttribute(p):"",C=H(E);if(C){var I=H(A),x=H(L)?H(L).innerHTML:"",B=I.getAttribute(k),_=H(B),y=I.getAttribute(h);K({modalTooltip:C,modalTooltipContent:x,modalTooltipFocusBackId:B,contentBackId:y}),O(_,n)}setTimeout(function(){o.insertAdjacentHTML("afterend",$({modalTooltipText:i,modalTooltipPrefixClass:e,modalTooltipTitle:a,modalTooltipCloseText:d,modalTooltipCloseTitle:g,modalTooltipCloseImgPath:b,modalTooltipContentId:l,modalTooltipFocusBackId:o.getAttribute("id")}))},50),setTimeout(function(){var t=H(A);if(""!==v){var o=H(v);o?o.focus():t.focus()}else t.focus()},51),D(o,n),t.preventDefault()}();var i=R(t.target,C);if((t.target.getAttribute("id")===A||""!==i)&&"click"===o){var l=H(E),a=H(L)?H(L).innerHTML:"",d=H(A),g=d.getAttribute(k),b=H(g),v=d.getAttribute(h);K({modalTooltip:l,modalTooltipContent:a,modalTooltipFocusBackId:g,contentBackId:v,fromId:t.target.getAttribute("id")}),O(b,n),b.focus()}var I=R(t.target,P),x=H(E);if(x&&"click"===o&&t.target.getAttribute("id")!==E&&""===I){var d=H(A);d.click(),S(t.target,n)===!0&&t.preventDefault()}if(x&&"keydown"===o){var a=H(L)?H(L).innerHTML:"",d=H(A),g=d.getAttribute(k),v=d.getAttribute(h),b=H(g),B=[].slice.call(x.querySelectorAll(j));27===t.keyCode&&(K({modalTooltip:x,modalTooltipContent:a,modalTooltipFocusBackId:g,contentBackId:v}),O(b,n),b.focus()),9===t.keyCode&&B.indexOf(t.target)>=0&&(t.shiftKey?t.target===B[0]&&(B[B.length-1].focus(),t.preventDefault()):t.target===B[B.length-1]&&(B[0].focus(),t.preventDefault()))}},!0)})},J=function Q(){G(),document.removeEventListener("DOMContentLoaded",Q)};document.addEventListener("DOMContentLoaded",J),window.van11yAccessibleModalTooltipAria=G}(document);
+'use strict';
+
+(function (doc) {
+
+    'use strict';
+
+    var MODAL_TOOLTIP_JS_CLASS = 'js-tooltip';
+    var MODAL_TOOLTIP_ID_PREFIX = 'label_tooltip';
+
+    var MODAL_TOOLTIP_TAG_WRAPPER = 'span';
+    var MODAL_TOOLTIP_WRAPPER_CLASS_SUFFIX = 'container';
+
+    var MODAL_TOOLTIP_IS_ACTIVE_CLASS = 'is-active';
+
+    var MODAL_TOOLTIP_CLASS_SUFFIX = 'tooltip';
+    var MODAL_TOOLTIP_PREFIX_CLASS_ATTR = 'data-tooltip-prefix-class';
+    var MODAL_TOOLTIP_TEXT_ATTR = 'data-tooltip-text';
+    var MODAL_TOOLTIP_CONTENT_ID_ATTR = 'data-tooltip-content-id';
+    var MODAL_TOOLTIP_TITLE_ATTR = 'data-tooltip-title';
+    var MODAL_TOOLTIP_TO_ATTR = 'data-tooltip-focus-toid';
+    var MODAL_TOOLTIP_CLOSE_TEXT_ATTR = 'data-tooltip-close-text';
+    var MODAL_TOOLTIP_CLOSE_TITLE_ATTR = 'data-tooltip-close-title';
+    var MODAL_TOOLTIP_CLOSE_IMG_ATTR = 'data-tooltip-close-img';
+    var MODAL_TOOLTIP_ROLE = 'dialog';
+
+    var MODAL_TOOLTIP_CONTENT_TEXT_ONLY_WRAPPER = 'p';
+
+    var MODAL_TOOLTIP_BUTTON_CLASS_SUFFIX = 'tooltip__close';
+    var MODAL_TOOLTIP_BUTTON_JS_ID = 'js-tooltip-close';
+    var MODAL_TOOLTIP_BUTTON_JS_CLASS = 'js-tooltip-close';
+    var MODAL_TOOLTIP_BUTTON_CONTENT_BACK_ID = 'data-content-back-id';
+    var MODAL_TOOLTIP_BUTTON_FOCUS_BACK_ID = 'data-focus-back';
+
+    var MODAL_TOOLTIP_CONTENT_WRAPPER_CLASS_SUFFIX = 'tooltip__wrapper';
+    var MODAL_TOOLTIP_CONTENT_CLASS_SUFFIX = 'tooltip__content';
+    var MODAL_TOOLTIP_CONTENT_JS_ID = 'js-tooltip-content';
+
+    var MODAL_TOOLTIP_CLOSE_IMG_CLASS_SUFFIX = 'tooltip__closeimg';
+    var MODAL_TOOLTIP_CLOSE_TEXT_CLASS_SUFFIX = 'modal-close__text';
+
+    var MODAL_TOOLTIP_TITLE_ID = 'tooltip-title';
+    var MODAL_TOOLTIP_TITLE_CLASS_SUFFIX = 'tooltip__title';
+
+    var FOCUSABLE_ELEMENTS_STRING = "a[href], area[href], input:not([type='hidden']):not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
+
+    var MODAL_TOOLTIP_DIALOG_JS_ID = 'js-dialogtooltip';
+    var MODAL_TOOLTIP_DIALOG_JS_CLASS = 'js-dialogtooltip';
+
+    var ATTR_ROLE = 'role';
+    var ATTR_OPEN = 'open';
+    var ATTR_LABELLEDBY = 'aria-labelledby';
+    var ATTR_DESCRIBEDBY = 'aria-describedby';
+    //const ATTR_MODAL = 'aria-modal="true"';
+
+    var findById = function findById(id) {
+        return doc.getElementById(id);
+    };
+
+    var addClass = function addClass(el, className) {
+        if (el.classList) {
+            el.classList.add(className); // IE 10+
+        } else {
+                el.className += ' ' + className; // IE 8+
+            }
+    };
+
+    var removeClass = function removeClass(el, className) {
+        if (el.classList) {
+            el.classList.remove(className); // IE 10+
+        } else {
+                el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' '); // IE 8+
+            }
+    };
+
+    var hasClass = function hasClass(el, className) {
+        if (el.classList) {
+            return el.classList.contains(className); // IE 10+
+        } else {
+                return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className); // IE 8+ ?
+            }
+    };
+
+    var wrapOutside = function wrapOutside(el, wrapper) {
+        el.parentNode.insertBefore(wrapper, el);
+        wrapper.appendChild(el);
+    };
+
+    function remove(el) {
+        /* node.remove() is too modern for IE≤11 */
+        el.parentNode.removeChild(el);
+    }
+
+    /* gets an element el, search if it is child of parent class, returns id of the parent */
+    var searchParent = function searchParent(el, parentClass) {
+        var found = false;
+        var parentElement = el.parentNode;
+        while (parentElement && found === false) {
+            if (hasClass(parentElement, parentClass) === true) {
+                found = true;
+            } else {
+                parentElement = parentElement.parentNode;
+            }
+        }
+        if (found === true) {
+            return parentElement.getAttribute('id');
+        } else {
+            return '';
+        }
+    };
+
+    /**
+     * Create the template for a modal tooltip
+     * @param  {Object} config
+     * @return {String}
+     */
+    var createModalTooltip = function createModalTooltip(config) {
+
+        var id = MODAL_TOOLTIP_DIALOG_JS_ID;
+        var modalTooltipClassName = config.modalTooltipPrefixClass + MODAL_TOOLTIP_CLASS_SUFFIX;
+        var modalTooltipClassWrapper = config.modalTooltipPrefixClass + MODAL_TOOLTIP_CONTENT_WRAPPER_CLASS_SUFFIX;
+        var buttonCloseClassName = config.modalTooltipPrefixClass + MODAL_TOOLTIP_BUTTON_CLASS_SUFFIX;
+        var buttonCloseInner = config.modalTooltipCloseImgPath ? '<img src="' + config.modalTooltipCloseImgPath + '" alt="' + config.modalTooltipCloseText + '" class="' + MODAL_TOOLTIP_CLOSE_IMG_CLASS_SUFFIX + '" />' : '<span class="' + MODAL_TOOLTIP_CLOSE_TEXT_CLASS_SUFFIX + '">\n              ' + config.modalTooltipCloseText + '\n             </span>';
+        var contentClassName = config.modalTooltipPrefixClass + MODAL_TOOLTIP_CONTENT_CLASS_SUFFIX;
+        var titleClassName = config.modalTooltipPrefixClass + MODAL_TOOLTIP_TITLE_CLASS_SUFFIX;
+        var title = config.modalTooltipTitle !== '' ? '<h1 id="' + MODAL_TOOLTIP_TITLE_ID + '" class="' + titleClassName + '">\n               ' + config.modalTooltipTitle + '\n             </h1>' : '';
+        var button_close = '<button type="button" class="' + MODAL_TOOLTIP_BUTTON_JS_CLASS + ' ' + buttonCloseClassName + '" id="' + MODAL_TOOLTIP_BUTTON_JS_ID + '" title="' + config.modalTooltipCloseTitle + '" ' + MODAL_TOOLTIP_BUTTON_CONTENT_BACK_ID + '="' + config.modalTooltipContentId + '" ' + MODAL_TOOLTIP_BUTTON_FOCUS_BACK_ID + '="' + config.modalTooltipFocusBackId + '">\n                             ' + buttonCloseInner + '\n                            </button>';
+        var content = config.modalTooltipText;
+        var describedById = "js-tooltip-aria-desc";
+
+        // If there is no content but an id we try to fetch content id
+        if (content === '' && config.modalTooltipContentId) {
+            describedById = config.modalTooltipContentId;
+            var contentFromId = findById(config.modalTooltipContentId);
+            if (contentFromId) {
+                content = '<div id="' + MODAL_TOOLTIP_CONTENT_JS_ID + '">\n                            ' + contentFromId.innerHTML + '\n                           </div';
+                // we remove content from its source to avoid id duplicates, etc.
+                contentFromId.innerHTML = '';
+            }
+        } else {
+            // we put it in a p
+            content = '<' + MODAL_TOOLTIP_CONTENT_TEXT_ONLY_WRAPPER + ' id="'+describedById+'">\n                            ' + content + '\n                       </' + MODAL_TOOLTIP_CONTENT_TEXT_ONLY_WRAPPER + '>';
+        }
+
+        return '<div aria-modal="true" id="' + id + '" class="' + modalTooltipClassName + ' ' + MODAL_TOOLTIP_DIALOG_JS_CLASS + '" ' + ATTR_ROLE + '="' + MODAL_TOOLTIP_ROLE + '" ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TOOLTIP_TITLE_ID + '" ' + ATTR_DESCRIBEDBY + '="' + describedById +'">\n                  <div role="document" class="' + modalTooltipClassWrapper + '">\n                    ' + button_close + '\n                    <div class="' + contentClassName + '">\n                      ' + title + '\n                      ' + content + '\n                    </div>\n                  </div>\n                </dialog>';
+    };
+
+    var closeModalTooltip = function closeModalTooltip(config) {
+
+        remove(config.modalTooltip);
+
+        if (config.contentBackId !== '') {
+            var contentBack = findById(config.contentBackId);
+            if (contentBack) {
+                contentBack.innerHTML = config.modalTooltipContent;
+            }
+        }
+
+        if (config.modalTooltipFocusBackId) {
+            var contentFocus = findById(config.modalTooltipFocusBackId);
+            if (contentFocus) {
+                contentFocus.focus();
+            }
+        }
+    };
+
+    /** Find all modal tooltips inside a container
+     * @param  {Node} node Default document
+     * @return {Array}
+     */
+    var $listModalTooltips = function $listModalTooltips() {
+        var node = arguments.length <= 0 || arguments[0] === undefined ? doc : arguments[0];
+        return [].slice.call(node.querySelectorAll('.' + MODAL_TOOLTIP_JS_CLASS));
+    };
+
+    /**
+     * Build modal tooltips for a container
+     * @param  {Node} node
+     * @param  {addListeners} boolean
+     */
+    var attach = function attach(node) {
+        var addListeners = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
+
+        $listModalTooltips(node).forEach(function (modal_tooltip_node) {
+
+            var iLisible = Math.random().toString(32).slice(2, 12);
+            var modalTooltipPrefixClass = modal_tooltip_node.hasAttribute(MODAL_TOOLTIP_PREFIX_CLASS_ATTR) === true ? modal_tooltip_node.getAttribute(MODAL_TOOLTIP_PREFIX_CLASS_ATTR) + '-' : '';
+
+            modal_tooltip_node.setAttribute('id', MODAL_TOOLTIP_ID_PREFIX + iLisible);
+
+            // wrap element in
+            var wrapper = doc.createElement(MODAL_TOOLTIP_TAG_WRAPPER);
+            wrapper.setAttribute('class', modalTooltipPrefixClass + MODAL_TOOLTIP_WRAPPER_CLASS_SUFFIX);
+            wrapOutside(modal_tooltip_node, wrapper);
+        });
+
+        if (addListeners) {
+            /* listeners */
+            ['click', 'keydown'].forEach(function (eventName) {
+
+                doc.body.addEventListener(eventName, function (e) {
+
+                    // click on link modal tooltip
+                    if (hasClass(e.target, MODAL_TOOLTIP_JS_CLASS) === true && eventName === 'click' && hasClass(e.target, MODAL_TOOLTIP_IS_ACTIVE_CLASS) === false) {
+                        (function () {
+
+                            var modalTooltipLauncher = e.target;
+                            var modalTooltipPrefixClass = modalTooltipLauncher.hasAttribute(MODAL_TOOLTIP_PREFIX_CLASS_ATTR) === true ? modalTooltipLauncher.getAttribute(MODAL_TOOLTIP_PREFIX_CLASS_ATTR) + '-' : '';
+                            var modalTooltipText = modalTooltipLauncher.hasAttribute(MODAL_TOOLTIP_TEXT_ATTR) === true ? modalTooltipLauncher.getAttribute(MODAL_TOOLTIP_TEXT_ATTR) : '';
+                            var modalTooltipContentId = modalTooltipLauncher.hasAttribute(MODAL_TOOLTIP_CONTENT_ID_ATTR) === true ? modalTooltipLauncher.getAttribute(MODAL_TOOLTIP_CONTENT_ID_ATTR) : '';
+                            var modalTooltipTitle = modalTooltipLauncher.hasAttribute(MODAL_TOOLTIP_TITLE_ATTR) === true ? modalTooltipLauncher.getAttribute(MODAL_TOOLTIP_TITLE_ATTR) : '';
+                            var modalTooltipCloseText = modalTooltipLauncher.hasAttribute(MODAL_TOOLTIP_CLOSE_TEXT_ATTR) === true ? modalTooltipLauncher.getAttribute(MODAL_TOOLTIP_CLOSE_TEXT_ATTR) : '';
+                            var modalTooltipCloseTitle = modalTooltipLauncher.hasAttribute(MODAL_TOOLTIP_CLOSE_TITLE_ATTR) === true ? modalTooltipLauncher.getAttribute(MODAL_TOOLTIP_CLOSE_TITLE_ATTR) : modalTooltipCloseText;
+                            var modalTooltipCloseImgPath = modalTooltipLauncher.hasAttribute(MODAL_TOOLTIP_CLOSE_IMG_ATTR) === true ? modalTooltipLauncher.getAttribute(MODAL_TOOLTIP_CLOSE_IMG_ATTR) : '';
+                            var modalTooltipGiveFocusToId = modalTooltipLauncher.hasAttribute(MODAL_TOOLTIP_TO_ATTR) === true ? modalTooltipLauncher.getAttribute(MODAL_TOOLTIP_TO_ATTR) : '';
+
+                            var modalTooltip = findById(MODAL_TOOLTIP_DIALOG_JS_ID);
+                            // if already a modal tooltip opened, we close it
+                            if (modalTooltip) {
+                                // get launcher
+                                var modalTooltipButtonClose = findById(MODAL_TOOLTIP_BUTTON_JS_ID);
+                                var modalTooltipContent = findById(MODAL_TOOLTIP_CONTENT_JS_ID) ? findById(MODAL_TOOLTIP_CONTENT_JS_ID).innerHTML : '';
+                                var modalTooltipFocusBackId = modalTooltipButtonClose.getAttribute(MODAL_TOOLTIP_BUTTON_FOCUS_BACK_ID);
+                                var _modalTooltipLauncher = findById(modalTooltipFocusBackId);
+                                var contentBackId = modalTooltipButtonClose.getAttribute(MODAL_TOOLTIP_BUTTON_CONTENT_BACK_ID);
+
+                                // remove modal tooltip
+                                closeModalTooltip({
+                                    modalTooltip: modalTooltip,
+                                    modalTooltipContent: modalTooltipContent,
+                                    modalTooltipFocusBackId: modalTooltipFocusBackId,
+                                    contentBackId: contentBackId
+                                });
+
+                                // remove active class on launcher
+                                removeClass(_modalTooltipLauncher, MODAL_TOOLTIP_IS_ACTIVE_CLASS);
+                            }
+
+                            // insert modal
+                            // Chrome bug
+                            setTimeout(function () {
+                                modalTooltipLauncher.insertAdjacentHTML('afterend', createModalTooltip({
+                                    modalTooltipText: modalTooltipText,
+                                    modalTooltipPrefixClass: modalTooltipPrefixClass,
+                                    modalTooltipTitle: modalTooltipTitle,
+                                    modalTooltipCloseText: modalTooltipCloseText,
+                                    modalTooltipCloseTitle: modalTooltipCloseTitle,
+                                    modalTooltipCloseImgPath: modalTooltipCloseImgPath,
+                                    modalTooltipContentId: modalTooltipContentId,
+                                    modalTooltipFocusBackId: modalTooltipLauncher.getAttribute('id')
+                                }));
+                            }, 50);
+                            // fix for Chrome bug resolution
+                            setTimeout(function () {
+                                // give focus to close button or specified element
+                                var closeButton = findById(MODAL_TOOLTIP_BUTTON_JS_ID);
+                                if (modalTooltipGiveFocusToId !== '') {
+                                    var focusTo = findById(modalTooltipGiveFocusToId);
+                                    if (focusTo) {
+                                        focusTo.focus();
+                                    } else {
+                                        closeButton.focus();
+                                    }
+                                } else {
+                                    closeButton.focus();
+                                }
+                            }, 51);
+
+                            // add class is-active to launcher
+                            addClass(modalTooltipLauncher, MODAL_TOOLTIP_IS_ACTIVE_CLASS);
+
+                            e.preventDefault();
+                        })();
+                    }
+
+                    // click on close button
+                    var parentButton = searchParent(e.target, MODAL_TOOLTIP_BUTTON_JS_CLASS);
+                    if ((e.target.getAttribute('id') === MODAL_TOOLTIP_BUTTON_JS_ID || parentButton !== '') && eventName === 'click') {
+                        var _modalTooltip = findById(MODAL_TOOLTIP_DIALOG_JS_ID);
+                        var modalTooltipContent = findById(MODAL_TOOLTIP_CONTENT_JS_ID) ? findById(MODAL_TOOLTIP_CONTENT_JS_ID).innerHTML : '';
+                        var modalTooltipButtonClose = findById(MODAL_TOOLTIP_BUTTON_JS_ID);
+                        var modalTooltipFocusBackId = modalTooltipButtonClose.getAttribute(MODAL_TOOLTIP_BUTTON_FOCUS_BACK_ID);
+                        var modalTooltipLauncher = findById(modalTooltipFocusBackId);
+                        var contentBackId = modalTooltipButtonClose.getAttribute(MODAL_TOOLTIP_BUTTON_CONTENT_BACK_ID);
+
+                        closeModalTooltip({
+                            modalTooltip: _modalTooltip,
+                            modalTooltipContent: modalTooltipContent,
+                            modalTooltipFocusBackId: modalTooltipFocusBackId,
+                            contentBackId: contentBackId,
+                            fromId: e.target.getAttribute('id')
+                        });
+
+                        // remove class is-active on launcher and give focus to it
+                        removeClass(modalTooltipLauncher, MODAL_TOOLTIP_IS_ACTIVE_CLASS);
+                        modalTooltipLauncher.focus();
+                    }
+
+                    var parentModalTooltip = searchParent(e.target, MODAL_TOOLTIP_DIALOG_JS_CLASS);
+                    var modalTooltip = findById(MODAL_TOOLTIP_DIALOG_JS_ID);
+                    // click anywhere outside modal tooltip when it is opened
+                    if (modalTooltip && eventName === 'click' && // click anywhere with a modal tooltip opened
+                    e.target.getAttribute('id') !== MODAL_TOOLTIP_DIALOG_JS_ID && parentModalTooltip === '' // not a click in modal tooltip
+                    ) {
+                            var modalTooltipButtonClose = findById(MODAL_TOOLTIP_BUTTON_JS_ID);
+
+                            modalTooltipButtonClose.click();
+                            if (hasClass(e.target, MODAL_TOOLTIP_IS_ACTIVE_CLASS) === true) {
+                                e.preventDefault();
+                            }
+                        }
+
+                    // strike a key when modal tooltip opened
+                    if (modalTooltip && eventName === 'keydown') {
+                        var modalTooltipContent = findById(MODAL_TOOLTIP_CONTENT_JS_ID) ? findById(MODAL_TOOLTIP_CONTENT_JS_ID).innerHTML : '';
+                        var modalTooltipButtonClose = findById(MODAL_TOOLTIP_BUTTON_JS_ID);
+                        var modalTooltipFocusBackId = modalTooltipButtonClose.getAttribute(MODAL_TOOLTIP_BUTTON_FOCUS_BACK_ID);
+                        var contentBackId = modalTooltipButtonClose.getAttribute(MODAL_TOOLTIP_BUTTON_CONTENT_BACK_ID);
+                        var modalTooltipLauncher = findById(modalTooltipFocusBackId);
+                        var $listFocusables = [].slice.call(modalTooltip.querySelectorAll(FOCUSABLE_ELEMENTS_STRING));
+
+                        // esc
+                        if (e.keyCode === 27) {
+
+                            closeModalTooltip({
+                                modalTooltip: modalTooltip,
+                                modalTooltipContent: modalTooltipContent,
+                                modalTooltipFocusBackId: modalTooltipFocusBackId,
+                                contentBackId: contentBackId
+                            });
+
+                            // remove class is-active on launcher and give focus to it
+                            removeClass(modalTooltipLauncher, MODAL_TOOLTIP_IS_ACTIVE_CLASS);
+                            modalTooltipLauncher.focus();
+                        }
+
+                        // tab or Maj Tab in modal tooltip => capture focus
+                        if (e.keyCode === 9 && $listFocusables.indexOf(e.target) >= 0) {
+
+                            // maj-tab on first element focusable => focus on last
+                            if (e.shiftKey) {
+                                if (e.target === $listFocusables[0]) {
+                                    $listFocusables[$listFocusables.length - 1].focus();
+                                    e.preventDefault();
+                                }
+                            } else {
+                                // tab on last element focusable => focus on first
+                                if (e.target === $listFocusables[$listFocusables.length - 1]) {
+                                    $listFocusables[0].focus();
+                                    e.preventDefault();
+                                }
+                            }
+                        }
+                    }
+                }, true);
+            });
+        }
+    };
+
+    var onLoad = function onLoad() {
+        attach();
+        document.removeEventListener('DOMContentLoaded', onLoad);
+    };
+
+    document.addEventListener('DOMContentLoaded', onLoad);
+
+    window.van11yAccessibleModalTooltipAria = attach;
+})(document);
