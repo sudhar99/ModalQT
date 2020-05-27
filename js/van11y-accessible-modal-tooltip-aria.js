@@ -130,11 +130,9 @@
         var title = config.modalTooltipTitle !== '' ? '<h1 id="' + MODAL_TOOLTIP_TITLE_ID + '" class="' + titleClassName + '">\n               ' + config.modalTooltipTitle + '\n             </h1>' : '';
         var button_close = '<button type="button" class="' + MODAL_TOOLTIP_BUTTON_JS_CLASS + ' ' + buttonCloseClassName + '" id="' + MODAL_TOOLTIP_BUTTON_JS_ID + '" title="' + config.modalTooltipCloseTitle + '" ' + MODAL_TOOLTIP_BUTTON_CONTENT_BACK_ID + '="' + config.modalTooltipContentId + '" ' + MODAL_TOOLTIP_BUTTON_FOCUS_BACK_ID + '="' + config.modalTooltipFocusBackId + '">\n                             ' + buttonCloseInner + '\n                            </button>';
         var content = config.modalTooltipText;
-        var describedById = "js-tooltip-aria-desc";
 
         // If there is no content but an id we try to fetch content id
         if (content === '' && config.modalTooltipContentId) {
-            describedById = config.modalTooltipContentId;
             var contentFromId = findById(config.modalTooltipContentId);
             if (contentFromId) {
                 content = '<div id="' + MODAL_TOOLTIP_CONTENT_JS_ID + '">\n                            ' + contentFromId.innerHTML + '\n                           </div';
@@ -143,10 +141,10 @@
             }
         } else {
             // we put it in a p
-            content = '<' + MODAL_TOOLTIP_CONTENT_TEXT_ONLY_WRAPPER + ' id="'+describedById+'">\n                            ' + content + '\n                       </' + MODAL_TOOLTIP_CONTENT_TEXT_ONLY_WRAPPER + '>';
+            content = '<' + MODAL_TOOLTIP_CONTENT_TEXT_ONLY_WRAPPER +'">\n                            ' + content + '\n                       </' + MODAL_TOOLTIP_CONTENT_TEXT_ONLY_WRAPPER + '>';
         }
 
-        return '<div aria-modal="true" id="' + id + '" class="' + modalTooltipClassName + ' ' + MODAL_TOOLTIP_DIALOG_JS_CLASS + '" ' + ATTR_ROLE + '="' + MODAL_TOOLTIP_ROLE + '" ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TOOLTIP_TITLE_ID + '" ' + ATTR_DESCRIBEDBY + '="' + describedById +'">\n                  <div role="document" class="' + modalTooltipClassWrapper + '">\n                    ' + button_close + '\n                    <div class="' + contentClassName + '">\n                      ' + title + '\n                      ' + content + '\n                    </div>\n                  </div>\n                </dialog>';
+        return '<div aria-modal="true" id="' + id + '" class="' + modalTooltipClassName + ' ' + MODAL_TOOLTIP_DIALOG_JS_CLASS + '" ' + ATTR_ROLE + '="' + MODAL_TOOLTIP_ROLE + '" ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TOOLTIP_TITLE_ID + '" ' + ATTR_DESCRIBEDBY + '="' + MODAL_TOOLTIP_CONTENT_JS_ID +'">\n                  <div role="document" class="' + modalTooltipClassWrapper + '">\n                    ' + button_close + '\n                    <div class="' + contentClassName + '">\n                      ' + title + '\n                      ' + content + '\n                    </div>\n                  </div>\n                </dialog>';
     };
 
     var closeModalTooltip = function closeModalTooltip(config) {
