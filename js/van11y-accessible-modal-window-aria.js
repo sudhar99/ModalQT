@@ -281,12 +281,18 @@
             if (modalGiveFocusToId !== '') {
               var focusTo = findById(modalGiveFocusToId);
               if (focusTo) {
-                focusTo.focus();
-              } else {
-                closeButton.focus();
+                setTimeout(function() {
+                  focusTo.focus();
+                  }, 0);
+              } else {               
+                setTimeout(function() {
+                  closeButton.focus();
+                  }, 0);                
               }
             } else {
-              closeButton.focus();
+              setTimeout(function() {
+                closeButton.focus();
+                }, 0);                
             }
 
             e.preventDefault();
