@@ -2544,7 +2544,8 @@ dialog {
 }
 
 /* line 54, ../sass/modal-quick-tips.scss */
-.mycal-modal-overlay {
+.mycal-modal-overlay,
+.mycal-tooltip-modal-overlay {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -2553,7 +2554,6 @@ dialog {
   z-index: 599;
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
-  animation: fadewhite ease .5s 1 normal;
 }
 
 /* line 66, ../sass/modal-quick-tips.scss */
@@ -2563,7 +2563,8 @@ dialog {
 
 /* line 70, ../sass/modal-quick-tips.scss */
 .mycal-modal-overlay[data-background-click="disabled"],
-.mycal-animated-modal-overlay[data-background-click="disabled"] {
+.mycal-animated-modal-overlay[data-background-click="disabled"],
+.mycal-tooltip-modal-overlay[data-background-click="disabled"] {
   cursor: auto;
 }
 
@@ -2594,7 +2595,7 @@ dialog {
 }
 
 /* line 104, ../sass/modal-quick-tips.scss */
-.mycal-modal-close {
+.mycal-modal-close, .mycal-tooltip-modal-close {
   float: right;
   border: 0;
   padding: 10.4347826087px 13.8px;
@@ -2606,19 +2607,21 @@ dialog {
   line-height: 20.8695652174px;
 }
 /* line 115, ../sass/modal-quick-tips.scss */
-.mycal-modal-close:focus, .mycal-modal-close.focus, .mycal-modal-close.mycal-button-focus {
+.mycal-modal-close:focus, .mycal-modal-close.focus, .mycal-modal-close.mycal-button-focus,
+.mycal-tooltip-modal-close:focus, .mycal-tooltip-modal-close.focus, .mycal-tooltip-modal-close.mycal-button-focus {
   outline: 2px solid #fff;
   outline-offset: 0px;
   z-index: 1000 !important;
 }
 /* line 121, ../sass/modal-quick-tips.scss */
-.mycal-modal-close:hover, .mycal-modal-close:active {
+.mycal-modal-close:hover, .mycal-modal-close:active,
+.mycal-tooltip-modal-close:hover, .mycal-tooltip-modal-close:active {
   color: #fff;
   background: #00659e;
 }
 
 /* line 128, ../sass/modal-quick-tips.scss */
-.mycal-modal-title {
+.mycal-modal-title, .mycal-tooltip-modal-title {
   padding: 20.8695652174px 27.6px;
   padding-right: 3.5em;
   color: #fff;
@@ -6192,4 +6195,23 @@ a.mask {
   font-size: 16px;
 }
 
-/*# sourceMappingURL=mss.css.map */
+/* line 200, ../sass/modal-quick-tips.scss */
+.mycal-tooltip-modal {
+  left: auto;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: 667;
+  position: fixed;
+  width: 25rem;
+  max-width: 100%;
+  font-size: 1em;
+  border: 0;
+  border-radius: 0;
+  background: #f6f6f6;
+  /* fallback IE9 */
+  box-shadow: -5px 0 0 0 rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  text-align: left !important;
+}
