@@ -170,7 +170,7 @@
       }
     }
 
-    return '<div  aria-modal="true" id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + MODAL_ROLE + '" ' + describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n                      ' + button_close + '\n                      <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n                    </div>\n                  </div>';
+    return '<div  aria-modal="true" id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + MODAL_ROLE + '" ' + describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n                      ' + '\n                      <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n '+ button_close  + '                  </div>\n                  </div>';
     //return '<dialog id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + MODAL_ROLE + '" ' + describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n                      ' + button_close + '\n                      <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n                    </div>\n                  </dialog>';
 
   };
@@ -284,18 +284,12 @@
             if (modalGiveFocusToId !== '') {
               var focusTo = findById(modalGiveFocusToId);
               if (focusTo) {
-                setTimeout(function() {
                   focusTo.focus();
-                  }, 0);
               } else {               
-                setTimeout(function() {
                   closeButton.focus();
-                  }, 0);                
               }
             } else {
-              setTimeout(function() {
                 closeButton.focus();
-                }, 0);                
             }
 
             e.preventDefault();
