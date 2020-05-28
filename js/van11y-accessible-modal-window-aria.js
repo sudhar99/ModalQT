@@ -155,8 +155,7 @@
     var contentClassName = config.modalPrefixClass + MODAL_CONTENT_CLASS_SUFFIX;
     var titleClassName = config.modalPrefixClass + MODAL_TITLE_CLASS_SUFFIX;
     var title = config.modalTitle !== '' ? '<h1 id="' + MODAL_TITLE_ID + '" class="' + titleClassName + '">\n                                          ' + config.modalTitle + '\n                                         </h1>' : '';
-    var button_close = '<button type="button" class="' + MODAL_BUTTON_JS_CLASS + ' ' + buttonCloseClassName + '" id="' + MODAL_BUTTON_JS_ID + '" title="' + config.modalCloseTitle + '" ' + MODAL_BUTTON_CONTENT_BACK_ID + '="' + config.modalContentId + '" ' + MODAL_BUTTON_FOCUS_BACK_ID + '="' + config.modalFocusBackId + '">\n                               ' + buttonCloseInner + '\n                              </button>';
-    
+    var button_close = '<button type="button" class=" hello' + MODAL_BUTTON_JS_CLASS + ' ' + buttonCloseClassName + '" id="' + MODAL_BUTTON_JS_ID + '" title="' + config.modalCloseTitle + '" ' + MODAL_BUTTON_CONTENT_BACK_ID + '="' + config.modalContentId + '" ' + MODAL_BUTTON_FOCUS_BACK_ID + '="' + config.modalFocusBackId + '">\n                               ' + buttonCloseInner + '\n                              </button>';
     var content = config.modalText;
    // var describedById = config.modalDescribedById !== '' ? ATTR_DESCRIBEDBY + '="' + config.modalDescribedById + '"' : '';
     var describedById =  ATTR_DESCRIBEDBY + '="' + MODAL_CONTENT_JS_ID + '"';
@@ -171,8 +170,8 @@
       }
     }
 
-    return '<div  aria-modal="true" id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + MODAL_ROLE + '" ' + describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n                      ' + '\n                      <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n' + button_close +                   '  </div>\n                  </div>';
-    //return '<dialog id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + MODAL_ROLE + '" ' + describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n                      ' + '\n                      <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n' + button_close  +                     '</div>\n                  </dialog>';
+    return '<div  aria-modal="true" id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + MODAL_ROLE + '" ' + describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n                      ' + button_close + '\n                      <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n                    </div>\n                  </div>';
+    //return '<dialog id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + MODAL_ROLE + '" ' + describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n                      ' + button_close + '\n                      <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n                    </div>\n                  </dialog>';
 
   };
 
