@@ -22,7 +22,8 @@
   var MODAL_CLOSE_TEXT_ATTR = 'data-modal-close-text';
   var MODAL_CLOSE_TITLE_ATTR = 'data-modal-close-title';
   var MODAL_CLOSE_IMG_ATTR = 'data-modal-close-img';
-  var MODAL_ROLE = 'dialog';
+  var MODAL_ROLE = 'data-modal-role';
+  var MODAL_ROLE_DIALOG = 'dialog';
 
   var MODAL_BUTTON_CLASS_SUFFIX = 'modal-close';
   var MODAL_BUTTON_JS_ID = 'js-modal-close';
@@ -102,6 +103,86 @@
     while (parent.firstChild !== wrapper) wrapper.appendChild(parent.firstChild);
   }
 
+
+  /**
+   * @desc Set focus on descendant nodes until the first focusable element is
+   *       found.
+   * @param element
+   *          DOM node for which to find the first focusable descendant.
+   * @returns
+   *  true if a focusable element is found and focus is set.
+   */
+  function focusFirstDescendant (element) {
+    for (var i = 0; i < element.childNodes.length; i++) {
+      var child = element.childNodes[i];
+      if (attemptFocus(child) ||
+          focusFirstDescendant(child)) {
+        return true;
+      }
+    }
+    return false;
+  }; // end focusFirstDescendant
+
+  function isFocusable (element) {
+    if (element.tabIndex > 0 || (element.tabIndex === 0 && element.getAttribute('tabIndex') !== null)) {
+      return true;
+    }
+  
+    if (element.disabled) {
+      return false;
+    }
+  
+    switch (element.nodeName) {
+      case 'A':
+        return !!element.href && element.rel != 'ignore';
+      case 'INPUT':
+        return element.type != 'hidden' && element.type != 'file';
+      case 'BUTTON':
+      case 'SELECT':
+      case 'TEXTAREA':
+        return true;
+      default:
+        return false;
+    }
+  }
+
+   /* @desc Find the last descendant node that is focusable.
+   * @param element
+   *          DOM node for which to find the last focusable descendant.
+   * @returns
+   *  true if a focusable element is found and focus is set.
+   */
+   function focusLastDescendant (element) {
+    for (var i = element.childNodes.length - 1; i >= 0; i--) {
+      var child = element.childNodes[i];
+      if (attemptFocus(child) ||
+          focusLastDescendant(child)) {
+        return true;
+      }
+    }
+    return false;
+  }; // end focusLastDescendant
+
+  /**
+   * @desc Set Attempt to set focus on the current node.
+   * @param element
+   *          The node to attempt to focus on.
+   * @returns
+   *  true if element is focused.
+   */
+  function attemptFocus (element) {
+    if (!isFocusable(element)) {
+      return false;
+    }
+
+    try {
+      element.focus();
+    }
+    catch (e) {
+    }
+    return (document.activeElement === element);
+  }; // end attemptFocus
+
   function remove(el) {
     /* node.remove() is too modern for IEâ‰¤11 */
     el.parentNode.removeChild(el);
@@ -144,6 +225,8 @@
    * Create the template for a modal
    * @param  {Object} config
    * @return {String}
+   * 
+   * 
    */
   var createModal = function createModal(config) {
 
@@ -158,7 +241,8 @@
     var button_close = '<button type="button" class="' + MODAL_BUTTON_JS_CLASS + ' ' + buttonCloseClassName + '" id="' + MODAL_BUTTON_JS_ID + '" title="' + config.modalCloseTitle + '" ' + MODAL_BUTTON_CONTENT_BACK_ID + '="' + config.modalContentId + '" ' + MODAL_BUTTON_FOCUS_BACK_ID + '="' + config.modalFocusBackId + '">\n                               ' + buttonCloseInner + '\n                              </button>';
     var content = config.modalText;
    // var describedById = config.modalDescribedById !== '' ? ATTR_DESCRIBEDBY + '="' + config.modalDescribedById + '"' : '';
-    var describedById =  ATTR_DESCRIBEDBY + '="' + MODAL_CONTENT_JS_ID + '"';
+    var describedById =  config.modalDescribedById ? ATTR_DESCRIBEDBY + '="' + config.modalDescribedById + '"':'';
+    var role = config.modalRole;
 
     // If there is no content but an id we try to fetch content id
     if (content === '' && config.modalContentId) {
@@ -170,7 +254,7 @@
       }
     }
 
-    return '<div  aria-modal="true" id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + MODAL_ROLE + '" ' + describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n      ' + button_close + '\n                       <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n                   </div>\n                  </div>';
+    return '<div  aria-modal="true" id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + role + '" ' + describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n      ' + button_close + '\n                       <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n                   </div>\n                  </div>';
     //return '<dialog id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + MODAL_ROLE + '" ' + describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n                      ' + button_close + '\n                      <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n                    </div>\n                  </dialog>';
 
   };
@@ -249,6 +333,7 @@
             var modalCloseImgPath = modalLauncher.hasAttribute(MODAL_CLOSE_IMG_ATTR) === true ? modalLauncher.getAttribute(MODAL_CLOSE_IMG_ATTR) : '';
             var backgroundEnabled = modalLauncher.hasAttribute(MODAL_DATA_BACKGROUND_ATTR) === true ? modalLauncher.getAttribute(MODAL_DATA_BACKGROUND_ATTR) : '';
             var modalGiveFocusToId = modalLauncher.hasAttribute(MODAL_FOCUS_TO_ATTR) === true ? modalLauncher.getAttribute(MODAL_FOCUS_TO_ATTR) : '';
+            var modalRole = modalLauncher.hasAttribute(MODAL_ROLE) === true ? modalLauncher.getAttribute(MODAL_ROLE) : MODAL_ROLE_DIALOG;
 
             var wrapperBody = findById(WRAPPER_PAGE_JS);
 
@@ -285,11 +370,13 @@
               var focusTo = findById(modalGiveFocusToId);
               if (focusTo) {
                   focusTo.focus();
-              } else {               
-                  closeButton.focus();
+              } else {      
+                  focusFirstDescendant(findById(MODAL_JS_ID));       
+                  //closeButton.focus();
               }
             } else {
-                closeButton.focus();
+                focusFirstDescendant(findById(MODAL_JS_ID));
+                //closeButton.focus();
             }
 
             e.preventDefault();

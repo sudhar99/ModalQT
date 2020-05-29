@@ -57,7 +57,7 @@ dialog {
 <body role="document">
 
 
-<div id="page" class="mw960e" role="main">
+<div id="page" class="mw960e">
 
  <!-- Routing Number:	3222 81507	Account Number:	3407 479 713 -->
 	<div class="calpers-grid">
@@ -72,7 +72,18 @@ dialog {
                         data-modal-close-text="Close"
                         data-tooltip-close-title=""
                         data-modal-describedby-id="modal-focus"
-                        aria-haspopup="dialog">Confirmation Modal</button>
+                        data-modal-role="alertdialog"
+                        aria-haspopup="dialog">Confirmation Modal (Version 1)</button>
+                    <button 
+                        class="js-modal button mycal-button" 
+                        data-modal-prefix-class="mycal"
+                        data-modal-content-id="modal-content-01"
+                        data-modal-title="Confirmation Modal"
+                        data-modal-close-text="Close"
+                        data-tooltip-close-title=""
+                        data-modal-describedby-id="js-modal-content"
+                        data-modal-role="alertdialog"
+                        aria-haspopup="dialog">Confirmation Modal (Version 2)</button>                        
                     <button 
                         class="js-modal button mycal-button" 
                         data-modal-prefix-class="mycal"
@@ -80,8 +91,7 @@ dialog {
                         data-modal-title="Verify Your Financial Institution"
                         data-modal-close-text="Close"
                         data-modal-close-title=" "
-                        data-modal-focus-toid="modal-form-id-1"
-                        aria-haspopup="dialog">Modal with Form focus</button>
+                        aria-haspopup="dialog">Modal with default focus</button>
                     <button 
                         class="js-modal button mycal-button" 
                         data-modal-prefix-class="mycal"
@@ -149,7 +159,7 @@ dialog {
 
                 <div id="modal-content-input-text" class="mycal-hide">
 
-                    <form id="modal-form-id-2" tabindex="-1" class="calpers-form calpers-form-modal" action="." method="post">
+                    <form class="calpers-form calpers-form-modal" action="." method="post">
 
                         <div class="field">
                             <label for="saveEstimateName" required="true">Estimate Name <span class="required">(required)</span></label>
