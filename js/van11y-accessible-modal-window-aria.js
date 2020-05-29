@@ -399,8 +399,8 @@
             var modalContent = findById(MODAL_CONTENT_JS_ID) ? findById(MODAL_CONTENT_JS_ID).innerHTML : '';
             var overlay = findById(MODAL_OVERLAY_ID);
             var modalButtonClose = findById(MODAL_BUTTON_JS_ID);
-            var modalFocusBackId = findById(MODAL_BUTTON_FOCUS_BACK_ID).value(); //modalButtonClose.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
-            var contentBackId = findById(MODAL_BUTTON_CONTENT_BACK_ID).value();//modalButtonClose.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
+            var modalFocusBackId = findById(MODAL_BUTTON_FOCUS_BACK_ID) ? findById(MODAL_BUTTON_FOCUS_BACK_ID).value : ''; //modalButtonClose.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
+            var contentBackId = findById(MODAL_BUTTON_CONTENT_BACK_ID) ? findById(MODAL_BUTTON_CONTENT_BACK_ID).value :'';//modalButtonClose.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
             var backgroundEnabled = overlay.getAttribute(MODAL_OVERLAY_BG_ENABLED_ATTR);
 
             if (!(e.target.getAttribute('id') === MODAL_OVERLAY_ID && backgroundEnabled === 'disabled')) {
@@ -431,8 +431,8 @@
             var modalContent = findById(MODAL_CONTENT_JS_ID) ? findById(MODAL_CONTENT_JS_ID).innerHTML : '';
             var overlay = findById(MODAL_OVERLAY_ID);
             var modalButtonClose = findById(MODAL_BUTTON_JS_ID);
-            var modalFocusBackId = findById(MODAL_BUTTON_FOCUS_BACK_ID).value(); //modalButtonClose.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
-            var contentBackId = findById(MODAL_BUTTON_CONTENT_BACK_ID).value();//modalButtonClose.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
+            var modalFocusBackId = findById(MODAL_BUTTON_FOCUS_BACK_ID) ? findById(MODAL_BUTTON_FOCUS_BACK_ID).value : ''; //modalButtonClose.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
+            var contentBackId = findById(MODAL_BUTTON_CONTENT_BACK_ID) ? findById(MODAL_BUTTON_CONTENT_BACK_ID).value :'';//modalButtonClose.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
             var $listFocusables = [].slice.call(modal.querySelectorAll(FOCUSABLE_ELEMENTS_STRING));
 
             // esc
