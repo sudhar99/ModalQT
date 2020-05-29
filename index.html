@@ -69,9 +69,6 @@ dialog {
                         data-modal-prefix-class="mycal"
                         data-modal-content-id="modal-content-01"
                         data-modal-title="Confirmation Modal"
-                        data-modal-close-text="Close"
-                        data-tooltip-close-title=""
-                        data-modal-describedby-id="modal-focus"
                         data-modal-role="alertdialog"
                         aria-haspopup="dialog">Confirmation Modal (Version 1)</button>
                     <button 
@@ -79,9 +76,6 @@ dialog {
                         data-modal-prefix-class="mycal"
                         data-modal-content-id="modal-content-01"
                         data-modal-title="Confirmation Modal"
-                        data-modal-close-text="Close"
-                        data-tooltip-close-title=""
-                        data-modal-describedby-id="js-modal-content"
                         data-modal-role="alertdialog"
                         aria-haspopup="dialog">Confirmation Modal (Version 2)</button>                        
                     <button 
@@ -89,16 +83,12 @@ dialog {
                         data-modal-prefix-class="mycal"
                         data-modal-content-id="modal-content-radio-form"
                         data-modal-title="Verify Your Financial Institution"
-                        data-modal-close-text="Close"
-                        data-modal-close-title=" "
                         aria-haspopup="dialog">Modal with default focus</button>
                     <button 
                         class="js-modal button mycal-button" 
                         data-modal-prefix-class="mycal"
                         data-modal-content-id="modal-content-input-text"
                         data-modal-title="Save Estimate"
-                        data-modal-close-text="Close"
-                        data-modal-close-title=" "
                         data-modal-focus-toid="modal-form-id-2"
                         aria-haspopup="dialog">Modal Button opens Input Text Form</button>
 
@@ -184,7 +174,8 @@ dialog {
     
 			 <!-- <p><a href="#username-help" class="js-tooltip" data-tooltip-prefix-class="mycal" data-tooltip-content-id="username-help" data-tooltip-DescribedBy="username-help" data-tooltip-title="What is Username?"  data-tooltip-close-text="Close" data-tooltip-close-title="Close this dialog" id="label_tooltipu362l9ddll">What is a Username?</a> </p>
              -->
-             <p><a href="#username-help" class="js-modal" data-modal-prefix-class="mycal-tooltip" data-modal-content-id="username-help"  data-modal-describedby-id="js-modal-content"
+             <p><a href="#username-help" class="js-modal" data-modal-prefix-class="mycal-tooltip" data-modal-content-id="username-help"  
+                data-modal-describedby-id="js-modal-content"
                 data-modal-title="What is Username?"  data-modal-close-text="Close" data-tooltip-close-title="Close this dialog" id="label_tooltipu362l9ddll">What is a Username?</a> </p>
             
 			  <div id="username-help" class="mycal-hide">
@@ -202,6 +193,5 @@ dialog {
     </div>
 </div>
 <script src="./js/van11y-accessible-modal-window-aria.js"></script>
-<script src="./js/van11y-accessible-modal-tooltip-aria.js"></script>
 </body>
 </html>
