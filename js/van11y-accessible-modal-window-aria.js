@@ -245,7 +245,7 @@
       var button_close = ''; 
     }
     var content = config.modalText;
-    var describedById =  config.modalDescribedById ? ATTR_DESCRIBEDBY + '="' + config.modalDescribedById + '"':'';nb
+    var describedById =  config.modalDescribedById ? ATTR_DESCRIBEDBY + '="' + config.modalDescribedById + '"':'';
     var role = config.modalRole;
 
     // If there is no content but an id we try to fetch content id
