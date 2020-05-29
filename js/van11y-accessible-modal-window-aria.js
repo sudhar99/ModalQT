@@ -374,7 +374,10 @@
             if (modalGiveFocusToId !== '') {
               var focusTo = findById(modalGiveFocusToId);
               if (focusTo) {
-                  focusTo.focus();
+                  window.setTimeout(function ()
+                  {
+                    focusTo.focus();
+                  }, 0);
               } else {      
                   focusFirstDescendant(findById(MODAL_JS_ID));       
                   //closeButton.focus();
