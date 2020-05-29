@@ -84,14 +84,15 @@ dialog {
                         data-modal-prefix-class="mycal"
                         data-modal-content-id="modal-content-radio-form"
                         data-modal-title="Verify Your Financial Institution"
-                        aria-haspopup="dialog">Modal with default focus</button>
+                        data-modal-describedby-id="routeId"
+                        aria-haspopup="dialog">Modal with focus & Para read</button>
                     <button 
                         class="js-modal button mycal-button" 
                         data-modal-prefix-class="mycal"
                         data-modal-content-id="modal-content-input-text"
                         data-modal-title="Save Estimate"
                         data-modal-focus-toid="modal-form-id-2"
-                        aria-haspopup="dialog">Modal Button opens Input Text Form</button>
+                        aria-haspopup="dialog">Modal with default focus</button>
 
 
                 <div id="modal-content-01" class="mycal-hide">
@@ -109,8 +110,8 @@ dialog {
 
                 <div id="modal-content-radio-form" class="mycal-hide">
 
-                    <form id="modal-form-id-1" tabindex-"-1" class="calpers-form calpers-form-modal" action="." method="post">
-                        <p>Based on the routing number you've entered, we have identified your financial institution as the following:</p>
+                    <form id="modal-form-id-1"  class="calpers-form calpers-form-modal" action="." method="post">
+                        <p id="routeId">Based on the routing number you've entered, we have identified your financial institution as the following:</p>
                         <fieldset>
 
                             <legend>Financial Institution Name Match</legend>
