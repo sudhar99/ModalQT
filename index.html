@@ -71,6 +71,7 @@ dialog {
                         data-modal-title="Confirmation Modal"
                         data-modal-role="alertdialog"
                         data-modal-describedby-id="modal-focus"
+                        data-modal-focus-toid="cancelId"
                         aria-haspopup="dialog">Confirmation Modal</button>                        
                     <button 
                         class="js-modal button mycal-button" 
@@ -140,7 +141,7 @@ dialog {
 
                             <div class="calpers-buttons">
                                 <button type="button" class="button mycal-button">Confirm</button>
-                                <button type="button" class="button mycal-button-secondary js-modal-close">Close</button>
+                                <button type="button" id="cancelId" class="button mycal-button-secondary js-modal-close">Close</button>
                             </div>
 
                         </fieldset>
