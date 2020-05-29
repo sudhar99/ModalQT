@@ -397,7 +397,7 @@
             var overlay = findById(MODAL_OVERLAY_ID);
             var modalDialog = findById(MODAL_JS_ID);
             var modalFocusBackId = modalDialog.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
-            var contentBackId = fmodalDialog.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
+            var contentBackId = modalDialog.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
             var backgroundEnabled = overlay.getAttribute(MODAL_OVERLAY_BG_ENABLED_ATTR);
 
             if (!(e.target.getAttribute('id') === MODAL_OVERLAY_ID && backgroundEnabled === 'disabled')) {
@@ -429,7 +429,7 @@
             var overlay = findById(MODAL_OVERLAY_ID);
             var modalDialog = findById(MODAL_JS_ID);
             var modalFocusBackId = modalDialog.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
-            var contentBackId = fmodalDialog.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
+            var contentBackId = modalDialog.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
             var $listFocusables = [].slice.call(modal.querySelectorAll(FOCUSABLE_ELEMENTS_STRING));
 
             // esc
