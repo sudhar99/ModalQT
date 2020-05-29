@@ -239,16 +239,13 @@
     var contentClassName = config.modalPrefixClass + MODAL_CONTENT_CLASS_SUFFIX;
     var titleClassName = config.modalPrefixClass + MODAL_TITLE_CLASS_SUFFIX;
     var title = config.modalTitle !== '' ? '<h1 id="' + MODAL_TITLE_ID + '" class="' + titleClassName + '">\n                                          ' + config.modalTitle + '\n                                         </h1>' : '';
-    title += "<input id='"+MODAL_BUTTON_FOCUS_BACK_ID +"' name='"+MODAL_BUTTON_FOCUS_BACK_ID +"'type='hidden' value='"+config.modalFocusBackId+"'>";
-    if(config.modalContentId != ''){
-      title += "<input id='"+MODAL_BUTTON_CONTENT_BACK_ID +"' name='"+MODAL_BUTTON_CONTENT_BACK_ID +"'type='hidden' value='"+config.modalContentId+"'>";
-    }
+    
     var button_close = '<button type="button" class="' + MODAL_BUTTON_JS_CLASS + ' ' + buttonCloseClassName + '" id="' + MODAL_BUTTON_JS_ID + '" title="' + config.modalCloseTitle + '">\n                               ' + buttonCloseInner + '\n                              </button>';
     if(config.modalCloseText === ''){
       var button_close = ''; 
     }
     var content = config.modalText;
-    var describedById =  config.modalDescribedById ? ATTR_DESCRIBEDBY + '="' + config.modalDescribedById + '"':'';
+    var describedById =  config.modalDescribedById ? ATTR_DESCRIBEDBY + '="' + config.modalDescribedById + '"':'';nb
     var role = config.modalRole;
 
     // If there is no content but an id we try to fetch content id
@@ -261,7 +258,7 @@
       }
     }
 
-    return '<div  aria-modal="true" id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + role + '" ' +  describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n      ' + button_close + '\n                       <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n                   </div>\n                  </div>';
+    return '<div  aria-modal="true" id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + role + '" ' + MODAL_BUTTON_FOCUS_BACK_ID + '="' + config.modalFocusBackId +"' " + MODAL_BUTTON_CONTENT_BACK_ID + '="' + config.modalContentId +"'" +  describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n      ' + button_close + '\n                       <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n                   </div>\n                  </div>';
     //return '<dialog id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + MODAL_ROLE + '" ' + describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n                      ' + button_close + '\n                      <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n                    </div>\n                  </dialog>';
 
   };
@@ -398,9 +395,9 @@
             var modal = findById(MODAL_JS_ID);
             var modalContent = findById(MODAL_CONTENT_JS_ID) ? findById(MODAL_CONTENT_JS_ID).innerHTML : '';
             var overlay = findById(MODAL_OVERLAY_ID);
-            var modalButtonClose = findById(MODAL_BUTTON_JS_ID);
-            var modalFocusBackId = findById(MODAL_BUTTON_FOCUS_BACK_ID) ? findById(MODAL_BUTTON_FOCUS_BACK_ID).value : ''; //modalButtonClose.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
-            var contentBackId = findById(MODAL_BUTTON_CONTENT_BACK_ID) ? findById(MODAL_BUTTON_CONTENT_BACK_ID).value :'';//modalButtonClose.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
+            var modalDialog = findById(MODAL_JS_ID);
+            var modalFocusBackId = modalDialog.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
+            var contentBackId = fmodalDialog.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
             var backgroundEnabled = overlay.getAttribute(MODAL_OVERLAY_BG_ENABLED_ATTR);
 
             if (!(e.target.getAttribute('id') === MODAL_OVERLAY_ID && backgroundEnabled === 'disabled')) {
@@ -430,9 +427,9 @@
             var modal = findById(MODAL_JS_ID);
             var modalContent = findById(MODAL_CONTENT_JS_ID) ? findById(MODAL_CONTENT_JS_ID).innerHTML : '';
             var overlay = findById(MODAL_OVERLAY_ID);
-            var modalButtonClose = findById(MODAL_BUTTON_JS_ID);
-            var modalFocusBackId = findById(MODAL_BUTTON_FOCUS_BACK_ID) ? findById(MODAL_BUTTON_FOCUS_BACK_ID).value : ''; //modalButtonClose.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
-            var contentBackId = findById(MODAL_BUTTON_CONTENT_BACK_ID) ? findById(MODAL_BUTTON_CONTENT_BACK_ID).value :'';//modalButtonClose.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
+            var modalDialog = findById(MODAL_JS_ID);
+            var modalFocusBackId = modalDialog.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
+            var contentBackId = fmodalDialog.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
             var $listFocusables = [].slice.call(modal.querySelectorAll(FOCUSABLE_ELEMENTS_STRING));
 
             // esc
