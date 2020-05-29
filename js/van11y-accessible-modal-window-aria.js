@@ -20,6 +20,7 @@
   var MODAL_TITLE_ATTR = 'data-modal-title';
   var MODAL_FOCUS_TO_ATTR = 'data-modal-focus-toid';
   var MODAL_CLOSE_TEXT_ATTR = 'data-modal-close-text';
+  var MODAL_NO_CLOSE = 'data-modal-no-close';
   var MODAL_CLOSE_TITLE_ATTR = 'data-modal-close-title';
   var MODAL_CLOSE_IMG_ATTR = 'data-modal-close-img';
   var MODAL_ROLE = 'data-modal-role';
@@ -238,12 +239,15 @@
     var contentClassName = config.modalPrefixClass + MODAL_CONTENT_CLASS_SUFFIX;
     var titleClassName = config.modalPrefixClass + MODAL_TITLE_CLASS_SUFFIX;
     var title = config.modalTitle !== '' ? '<h1 id="' + MODAL_TITLE_ID + '" class="' + titleClassName + '">\n                                          ' + config.modalTitle + '\n                                         </h1>' : '';
-    var button_close = '<button type="button" class="' + MODAL_BUTTON_JS_CLASS + ' ' + buttonCloseClassName + '" id="' + MODAL_BUTTON_JS_ID + '" title="' + config.modalCloseTitle + '" ' + MODAL_BUTTON_CONTENT_BACK_ID + '="' + config.modalContentId + '" ' + MODAL_BUTTON_FOCUS_BACK_ID + '="' + config.modalFocusBackId + '">\n                               ' + buttonCloseInner + '\n                              </button>';
+    title += "<input id='"+MODAL_BUTTON_FOCUS_BACK_ID +"' name='"+MODAL_BUTTON_FOCUS_BACK_ID +"'type='hidden' value='"+config.modalFocusBackId+"'>";
+    if(config.modalContentId != ''){
+      title += "<input id='"+MODAL_BUTTON_CONTENT_BACK_ID +"' name='"+MODAL_BUTTON_CONTENT_BACK_ID +"'type='hidden' value='"+config.modalContentId+"'>";
+    }
+    var button_close = '<button type="button" class="' + MODAL_BUTTON_JS_CLASS + ' ' + buttonCloseClassName + '" id="' + MODAL_BUTTON_JS_ID + '" title="' + config.modalCloseTitle + '">\n                               ' + buttonCloseInner + '\n                              </button>';
     if(config.modalCloseText === ''){
       var button_close = ''; 
     }
     var content = config.modalText;
-   // var describedById = config.modalDescribedById !== '' ? ATTR_DESCRIBEDBY + '="' + config.modalDescribedById + '"' : '';
     var describedById =  config.modalDescribedById ? ATTR_DESCRIBEDBY + '="' + config.modalDescribedById + '"':'';
     var role = config.modalRole;
 
@@ -395,8 +399,8 @@
             var modalContent = findById(MODAL_CONTENT_JS_ID) ? findById(MODAL_CONTENT_JS_ID).innerHTML : '';
             var overlay = findById(MODAL_OVERLAY_ID);
             var modalButtonClose = findById(MODAL_BUTTON_JS_ID);
-            var modalFocusBackId = modalButtonClose.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
-            var contentBackId = modalButtonClose.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
+            var modalFocusBackId = findById(MODAL_BUTTON_FOCUS_BACK_ID).value(); //modalButtonClose.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
+            var contentBackId = findById(MODAL_BUTTON_CONTENT_BACK_ID).value();//modalButtonClose.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
             var backgroundEnabled = overlay.getAttribute(MODAL_OVERLAY_BG_ENABLED_ATTR);
 
             if (!(e.target.getAttribute('id') === MODAL_OVERLAY_ID && backgroundEnabled === 'disabled')) {
@@ -427,8 +431,8 @@
             var modalContent = findById(MODAL_CONTENT_JS_ID) ? findById(MODAL_CONTENT_JS_ID).innerHTML : '';
             var overlay = findById(MODAL_OVERLAY_ID);
             var modalButtonClose = findById(MODAL_BUTTON_JS_ID);
-            var modalFocusBackId = modalButtonClose.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
-            var contentBackId = modalButtonClose.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
+            var modalFocusBackId = findById(MODAL_BUTTON_FOCUS_BACK_ID).value(); //modalButtonClose.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID);
+            var contentBackId = findById(MODAL_BUTTON_CONTENT_BACK_ID).value();//modalButtonClose.getAttribute(MODAL_BUTTON_CONTENT_BACK_ID);
             var $listFocusables = [].slice.call(modal.querySelectorAll(FOCUSABLE_ELEMENTS_STRING));
 
             // esc
