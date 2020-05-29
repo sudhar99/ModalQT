@@ -254,7 +254,7 @@
       }
     }
 
-    return '<div  aria-modal="true" id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + role + '" ' + describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n      ' + button_close + '\n                       <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n                   </div>\n                  </div>';
+    return '<div  aria-modal="true" id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + role + '" ' +  ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n      ' + button_close + '\n                       <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n                   </div>\n                  </div>';
     //return '<dialog id="' + id + '" class="' + modalClassName + '" ' + ATTR_ROLE + '="' + MODAL_ROLE + '" ' + describedById + ' ' + ATTR_OPEN + ' ' + ATTR_LABELLEDBY + '="' + MODAL_TITLE_ID + '">\n                    <div role="document" class="' + modalClassWrapper + '">\n                      ' + button_close + '\n                      <div class="' + contentClassName + '">\n                        ' + title + '\n                        ' + content + '\n                      </div>\n                    </div>\n                  </dialog>';
 
   };
@@ -355,7 +355,8 @@
               modalCloseImgPath: modalCloseImgPath,
               modalContentId: modalContentId,
               modalDescribedById: modalDescribedById,
-              modalFocusBackId: modalLauncher.getAttribute('id')
+              modalFocusBackId: modalLauncher.getAttribute('id'),
+              modalRole: modalRole
             }));
 
             // hide page
