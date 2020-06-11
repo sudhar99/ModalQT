@@ -306,7 +306,7 @@
       var body = doc.querySelector('body');
 
       modal_node.setAttribute('id', MODAL_ID_PREFIX + iLisible);
-      modal_node.setAttribute(ATTR_HASPOPUP, ATTR_HASPOPUP_VALUE);
+      //modal_node.setAttribute(ATTR_HASPOPUP, ATTR_HASPOPUP_VALUE);
 
       if (wrapperBody === null || wrapperBody.length === 0) {
         var wrapper = doc.createElement('DIV');
