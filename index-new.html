@@ -70,147 +70,153 @@ dialog {
 </head>
 <body>
 
+    <div id="main-content" class="mycal-main-content">
+        <div class="calpers-grid">
+            <div class="calpers-columns-column-main">
+                <div class="calpers-section-body">
+                    <!-- INSERT COMPONENT -->
+                    <h1>Buttons</h1>
+                    <div>
+                        <button 
+                            class="js-modal button mycal-button" 
+                            data-modal-prefix-class="mycal"
+                            data-modal-content-id="modal-content-01"
+                            data-modal-title="Confirmation Modal"
+                            data-modal-focus-toid="cancel1Id"
+                            data-modal-describedby-id="modal-focus"
+                            >Confirmation Modal</button>
+                    </div>
+                    <div>                    
+                        <button 
+                            class="js-modal button mycal-button" 
+                            data-modal-prefix-class="mycal"
+                            data-modal-content-id="modal-content-radio-form"
+                            data-modal-title="Verify Your Financial Institution"
+                            data-modal-describedby-id="routeId"
+                            >Modal with focus & Para read</button>
+                    </div>
 
-<div id="page">
+                    <div>
+                        <button 
+                            class="js-modal button mycal-button" 
+                            data-modal-prefix-class="mycal"
+                            data-modal-content-id="modal-content-radio-form"
+                            data-modal-title="Verify Your Financial Institution"
+                            >Modal with focus & No Para read</button>         
+                    </div>
 
- <!-- Routing Number:	3222 81507	Account Number:	3407 479 713 -->
-	<div class="calpers-grid">
-            <div id="modal-button">
-                <h2>Modal Button</h2>
-                <br/>
-                    <button 
-                        class="js-modal button mycal-button" 
-                        data-modal-prefix-class="mycal"
-                        data-modal-content-id="modal-content-01"
-                        data-modal-title="Confirmation Modal"
-                        data-modal-focus-toid="cancel1Id"
-                        data-modal-describedby-id="modal-focus"
-                        >Confirmation Modal</button>                        
-                    <button 
-                        class="js-modal button mycal-button" 
-                        data-modal-prefix-class="mycal"
-                        data-modal-content-id="modal-content-radio-form"
-                        data-modal-title="Verify Your Financial Institution"
-                        data-modal-describedby-id="routeId"
-                        >Modal with focus & Para read</button>
-
-                    <button 
-                        class="js-modal button mycal-button" 
-                        data-modal-prefix-class="mycal"
-                        data-modal-content-id="modal-content-radio-form"
-                        data-modal-title="Verify Your Financial Institution"
-                        >Modal with focus & No Para read</button>         
-
-                    <button 
-                        class="js-modal button mycal-button" 
-                        data-modal-prefix-class="mycal"
-                        data-modal-content-id="modal-content-input-text"
-                        data-modal-title="Save Estimate"
-                        data-modal-focus-toid="modal-form-id-2"
-                        >Modal with default focus</button>
+                    <div>
+                        <button 
+                            class="js-modal button mycal-button" 
+                            data-modal-prefix-class="mycal"
+                            data-modal-content-id="modal-content-input-text"
+                            data-modal-title="Save Estimate"
+                            data-modal-focus-toid="modal-form-id-2"
+                            >Modal with default focus</button>
+                    </div>
 
 
-                <div id="modal-content-01" class="mycal-hide">
+                    <div id="modal-content-01" class="mycal-hide">
 
-                    <div class="mycal-modal-content-text">
-                        <p id="modal-focus">Are you sure? pidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <br/>
-                        <div class="calpers-buttons">
-                            <button type="button" id="focus-element" class="button mycal-button">Confirm</button>
-                            <button type="button" id="cancel1Id" class="button mycal-button-secondary js-modal-close">Close</button>
+                        <div class="mycal-modal-content-text">
+                            <p id="modal-focus">Are you sure? pidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <br/>
+                            <div class="calpers-buttons">
+                                <button type="button" id="focus-element" class="button mycal-button">Confirm</button>
+                                <button type="button" id="cancel1Id" class="button mycal-button-secondary js-modal-close">Close</button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div id="modal-content-radio-form" class="mycal-hide">
+                    <div id="modal-content-radio-form" class="mycal-hide">
 
-                    <form id="modal-form-id-1"  class="calpers-form calpers-form-modal" action="." method="post">
-                        <p id="routeId">Based on the routing number you've entered, we have identified your financial institution as the following:</p>
-                        <fieldset>
+                        <form id="modal-form-id-1"  class="calpers-form calpers-form-modal" action="." method="post">
+                            <p id="routeId">Based on the routing number you've entered, we have identified your financial institution as the following:</p>
+                            <fieldset>
 
-                            <legend>Financial Institution Name Match</legend>
+                                <legend>Financial Institution Name Match</legend>
 
-                            <p id="content-id">This is a form with a fieldset and a legend element.</p>
+                                <p id="content-id">This is a form with a fieldset and a legend element.</p>
+
+                                <div class="field">
+                                    <ul class="mycal-input-list">
+                                        <li><input id="sel0" aria-labelledby="content-id sel0lbl"
+                                            name="selectedFinancialInstitutionIndex" 
+                                            class="mycal-radio-input" 
+                                            type="radio" value="0" 
+                                            checked="checked" /><label for="sel0" id="sel0lbl">
+                                            Mission Federal Credit Union </label></li>
+                                        <li>
+                                        <input id="sel1" aria-labelledby="content-id sel1lbl"
+                                            name="selectedFinancialInstitutionIndex" 
+                                            class="mycal-radio-input" 
+                                            type="radio" value="1" 
+                                            /><label for="sel1" id="sel1lbl" >
+                                        Mission Federal Credit Union v2 </label></li>                            
+                                    </ul>
+                                </div>
+
+                                <div class="calpers-buttons">
+                                    <button type="button" class="button mycal-button">Confirm</button>
+                                    <button type="button" id="cancelId" class="button mycal-button-secondary js-modal-close">Close</button>
+                                </div>
+
+                            </fieldset>
+
+                        </form>
+
+                    </div>
+
+
+                    <div id="modal-content-input-text" class="mycal-hide">
+
+                        <form class="calpers-form calpers-form-modal" action="." method="post">
 
                             <div class="field">
-                                <ul class="mycal-input-list">
-                                    <li><input id="sel0" aria-labelledby="content-id sel0lbl"
-                                        name="selectedFinancialInstitutionIndex" 
-                                        class="mycal-radio-input" 
-                                        type="radio" value="0" 
-                                        checked="checked" /><label for="sel0" id="sel0lbl">
-                                        Mission Federal Credit Union </label></li>
-                                    <li>
-                                    <input id="sel1" aria-labelledby="content-id sel1lbl"
-                                           name="selectedFinancialInstitutionIndex" 
-                                           class="mycal-radio-input" 
-                                           type="radio" value="1" 
-                                           /><label for="sel1" id="sel1lbl" >
-                                    Mission Federal Credit Union v2 </label></li>                            
-                                </ul>
+                                <label for="saveEstimateName" required="true">Estimate Name <span class="required">(required)</span></label>
+                                <input id="saveEstimateName" class="mycal-input" onkeyup="submitButtonStatusSave();" onblur="requiredTextFieldValidation(this);" name="saveEstimateName" type="text" value="" size="30" maxlength="50" aria-describedby="saveEstimateName_fldErrorRequired">
+                                <div id="saveEstimateName_fldErrorRequired" class="fieldErrorMessage" aria-live="polite" aria-atomic="true">
+                                    Enter the required field: Estimate Name
+                                </div>
                             </div>
 
                             <div class="calpers-buttons">
-                                <button type="button" class="button mycal-button">Confirm</button>
-                                <button type="button" id="cancelId" class="button mycal-button-secondary js-modal-close">Close</button>
+                                <button type="button" class="button mycal-button" disabled="disabled" aria-disabled="true">Save</button>
+                                <button type="button" class="button mycal-button-secondary js-modal-close">Close</button>
                             </div>
 
-                        </fieldset>
-
-                    </form>
-
+                        </form>
+                    </div>
                 </div>
-
-
-                <div id="modal-content-input-text" class="mycal-hide">
-
-                    <form class="calpers-form calpers-form-modal" action="." method="post">
-
-                        <div class="field">
-                            <label for="saveEstimateName" required="true">Estimate Name <span class="required">(required)</span></label>
-                            <input id="saveEstimateName" class="mycal-input" onkeyup="submitButtonStatusSave();" onblur="requiredTextFieldValidation(this);" name="saveEstimateName" type="text" value="" size="30" maxlength="50" aria-describedby="saveEstimateName_fldErrorRequired">
-                            <div id="saveEstimateName_fldErrorRequired" class="fieldErrorMessage" aria-live="polite" aria-atomic="true">
-                                Enter the required field: Estimate Name
-                            </div>
-                        </div>
-
-                        <div class="calpers-buttons">
-                            <button type="button" class="button mycal-button" disabled="disabled" aria-disabled="true">Save</button>
-                            <button type="button" class="button mycal-button-secondary js-modal-close">Close</button>
-                        </div>
-
-                    </form>
-                </div>
-
-            </div>
-
-		<div id="tooltip-button">
-			<h2>Tooltip Link</h2>
-    
-			 <!-- <p><a href="#username-help" class="js-tooltip" data-tooltip-prefix-class="mycal" data-tooltip-content-id="username-help" data-tooltip-DescribedBy="username-help" data-tooltip-title="What is Username?"  data-tooltip-close-text="Close" data-tooltip-close-title="Close this dialog" id="label_tooltipu362l9ddll">What is a Username?</a> </p>
-             -->
-             <p><a href="#username-help" class="js-modal" data-modal-prefix-class="mycal-tooltip" data-modal-content-id="username-help"  data-modal-describedby-id="js-modal-content"
-                data-modal-title="What is Username?"  data-modal-close-text="Close" data-tooltip-close-title="Close this dialog" id="label_tooltipu362l9ddll">What is a Username?</a> </p>
             
-			<div id="username-help" class="mycal-hide">
-                <p>A Username is an identification used by a person with access to a computer, network, or online service.</p> 
+                <div class="calpers-section-body">
 
-                <p>You can find your CalPERS ID on any letter you receive from CalPERS.</p>
+                    <div id="tooltip-button">
+                        <h2>Tooltip Link</h2>
+                
+                        <!-- <p><a href="#username-help" class="js-tooltip" data-tooltip-prefix-class="mycal" data-tooltip-content-id="username-help" data-tooltip-DescribedBy="username-help" data-tooltip-title="What is Username?"  data-tooltip-close-text="Close" data-tooltip-close-title="Close this dialog" id="label_tooltipu362l9ddll">What is a Username?</a> </p>
+                        -->
+                        <p><a href="#username-help" class="js-modal" data-modal-prefix-class="mycal-tooltip" data-modal-content-id="username-help"  data-modal-describedby-id="js-modal-content"
+                            data-modal-title="What is Username?"  data-modal-close-text="Close" data-tooltip-close-title="Close this dialog" id="label_tooltipu362l9ddll">What is a Username?</a> </p>
+                        
+                        <div id="username-help" class="mycal-hide">
+                            <p>A Username is an identification used by a person with access to a computer, network, or online service.</p> 
 
-                <p>It's a unique 10-digit number we assign to each member as an alternative to using your Social Security number when conducting business with CalPERS.</p>
-			</div>      
-		</div>
-  
-		
-  
-        <div class="footer">
-            <br>
-            This demo is a demo of <a href="https://van11y.net/accessible-modal-tooltip/">Van11y Accessible modal tooltip using <abbr title="Accessible Rich Internet Applications">ARIA</abbr></a>.
-            <br>
+                            <p>You can find your CalPERS ID on any letter you receive from CalPERS.</p>
+
+                            <p>It's a unique 10-digit number we assign to each member as an alternative to using your Social Security number when conducting business with CalPERS.</p>
+                        </div>      
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    <nav id="footerNavigation" class="mycal-navigation-footer" role="navigation" aria-label="Footer Navigation">
+        <div class="calpers-grid">
+            This demo is a demo of <a href="https://van11y.net/accessible-modal-tooltip/">Van11y Accessible modal tooltip using <abbr title="Accessible Rich Internet Applications">ARIA</abbr></a>.
+        </div>
+    </nav>
+    <script src="./js/van11y-accessible-modal-window-aria.js"></script>
 </body>
-<script src="./js/van11y-accessible-modal-window-aria.js"></script>
 </html>
