@@ -265,22 +265,29 @@
 
   var closeModal = function closeModal(config) {
 
+	//Remove error block inside modal.
+	$j('#' + MODAL_JS_ID + ' .error').remove();
+
     remove(config.modal);
     remove(config.overlay);
-
+    
     if (config.contentBackId !== '') {
       var contentBack = findById(config.contentBackId);
       if (contentBack) {
         contentBack.innerHTML = config.modalContent;
       }
     }
-
-    if (config.modalFocusBackId) {
-      var contentFocus = findById(config.modalFocusBackId);
-      if (contentFocus) {
-        contentFocus.focus();
-      }
-    }
+    
+    //Remove the dynamic modal and modal content upon close. 
+	$j('.'+currentModalClass).remove();
+	$j('#'+currentDialogContentId).remove();	
+	
+    if (config.modalFocusBackId && config.modalFocusBackId !== '') {
+        var contentFocus = findById(config.modalFocusBackId);
+        if (contentFocus) {
+        	contentFocus.focus();
+        }
+      }   
   };
 
   /** Find all modals inside a container
@@ -302,23 +309,16 @@
     $listModals(node).forEach(function (modal_node) {
 
       var iLisible = Math.random().toString(32).slice(2, 12);
-      var wrapperBody = findById(WRAPPER_PAGE_JS);
-      var body = doc.querySelector('body');
+      var wrapperBody = getWrapperBody();
 
       modal_node.setAttribute('id', MODAL_ID_PREFIX + iLisible);
       //modal_node.setAttribute(ATTR_HASPOPUP, ATTR_HASPOPUP_VALUE);
-
-      if (wrapperBody === null || wrapperBody.length === 0) {
-        var wrapper = doc.createElement('DIV');
-        wrapper.setAttribute('id', WRAPPER_PAGE_JS);
-        wrapInner(body, wrapper);
-      }
     });
 
     if (addListeners) {
 
       /* listeners */
-      ['click', 'keydown'].forEach(function (eventName) {
+     ['click', 'keydown'].forEach(function (eventName) {
 
         doc.body.addEventListener(eventName, function (e) {
 
@@ -338,9 +338,10 @@
             var backgroundEnabled = modalLauncher.hasAttribute(MODAL_DATA_BACKGROUND_ATTR) === true ? modalLauncher.getAttribute(MODAL_DATA_BACKGROUND_ATTR) : '';
             var modalGiveFocusToId = modalLauncher.hasAttribute(MODAL_FOCUS_TO_ATTR) === true ? modalLauncher.getAttribute(MODAL_FOCUS_TO_ATTR) : '';
             var modalRole = modalLauncher.hasAttribute(MODAL_ROLE) === true ? modalLauncher.getAttribute(MODAL_ROLE) : MODAL_ROLE_DIALOG;
+            var modalBackId = modalLauncher.hasAttribute(MODAL_BUTTON_FOCUS_BACK_ID) === true ? modalLauncher.getAttribute(MODAL_BUTTON_FOCUS_BACK_ID) : modalLauncher.getAttribute('id');
 
-            var wrapperBody = findById(WRAPPER_PAGE_JS);
-
+            var wrapperBody = getWrapperBody();
+            
             // insert overlay
             body.insertAdjacentHTML('beforeEnd', createOverlay({
               text: modalCloseTitle,
@@ -359,7 +360,7 @@
               modalCloseImgPath: modalCloseImgPath,
               modalContentId: modalContentId,
               modalDescribedById: modalDescribedById,
-              modalFocusBackId: modalLauncher.getAttribute('id'),
+              modalFocusBackId: modalBackId,
               modalRole: modalRole
             }));
 
@@ -482,6 +483,19 @@
     }
   };
 
+  function getWrapperBody()
+  {
+	  var wrapperBody = findById(WRAPPER_PAGE_JS);
+      var body = doc.querySelector('body');
+
+      if (wrapperBody === null || wrapperBody.length === 0) {
+        var wrapper = doc.createElement('DIV');
+        wrapper.setAttribute('id', WRAPPER_PAGE_JS);
+        wrapInner(body, wrapper);
+      }
+      return findById(WRAPPER_PAGE_JS);
+  }
+  
   var onLoad = function onLoad() {
     attach();
     document.removeEventListener('DOMContentLoaded', onLoad);
