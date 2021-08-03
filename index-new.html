@@ -4,8 +4,6 @@
  <meta charset="utf-8" />
  <title>Main page - Accessible modal tooltip using ARIA and Vanilla Javascript - Van11y </title>
  
-<link href="./styles_1567325714.css" rel="stylesheet" media="all" />
-
 <meta name="description" content="This script will create a fantastic-shiny accessible modal tooltip, using ARIA" />
 <meta name="keywords" content="collection, accessibility, scripts, projects, modal, tooltip, tab panel, accordion, hide/show, customisable" />
 
@@ -44,7 +42,8 @@ Until tabs.css is updated in mss-includes.css, adding here. DELETE ON 4/25
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i" rel="stylesheet" type="text/css">
 <script src="./js/jquery-3.4.1.slim.min.js"></script>
-<link rel="stylesheet" href="./css/mss.css" />
+<link rel="stylesheet" href="./css/modal-quick-tips.css" />
+ <link rel="stylesheet" href="./css/mss.css" />
 <style>
 
 .invisible {
@@ -128,7 +127,7 @@ dialog {
 
                     <div id="modal-content-radio-form" class="mycal-hide">
 
-                        <form id="modal-form-id-1"  class="calpers-form calpers-form-modal" action="." method="post">
+                        <form id="modal-form-id-1"  class="calpers-form-modal" action="." method="post">
                             <p id="routeId">Based on the routing number you've entered, we have identified your financial institution as the following:</p>
                             <fieldset>
 
@@ -168,7 +167,7 @@ dialog {
 
                     <div id="modal-content-input-text" class="mycal-hide">
 
-                        <form class="calpers-form calpers-form-modal" action="." method="post">
+                        <form class="calpers-form-modal" action="." method="post">
 
                             <div class="field">
                                 <label for="saveEstimateName" required="true">Estimate Name <span class="required">(required)</span></label>
