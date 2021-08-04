@@ -55,9 +55,10 @@ dialog {
 
     <div id="main-content" class="mycal-main-content">
         <div class="calpers-grid">
+            <h1>Progress Bar Samples</h1>
             <div class="calpers-columns-column-main">
                 <div class="calpers-section-body">
-                    <h2>Page level progress notification</h2>
+                    <h2>Page level fake progress notification</h2>
                     <p id="summary">
                         This HTML5 progress bar has been implemented with <code>aria-live="polite"</code> as the only ARIA in use. The separate announcements by screen readers for the progress bar and textual updates are achieved by putting them in separate live regions.
                     </p>
@@ -111,7 +112,7 @@ dialog {
                     startButton = document.getElementById('startButton');
 
                     //Update the progress bar
-                    if ( progress <= 100 ) {
+                    if ( progress <= 90 ) {
                         progressBar.value = progress;
 
                         //First update the fallback width
@@ -120,9 +121,10 @@ dialog {
                         
                         progressPercent.innerHTML = progressBar.value + '%';
                         progress += 10;
-                    } else {
+                    } else {                       
                         progress = 0;
                         stop();
+                        location.href='/confirm.html';
                     }
                 }
             }	

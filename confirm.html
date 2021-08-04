@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+ <meta charset="utf-8" />
+ <title>Accessible Progress bar - Samples </title>
+
+<!-- CSS Includes -->
+<link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/uswds-2_4-mycal.css" />
+<link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/datatables.min.css" />
+<link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/style.css" />
+<!--Security Image is not included in mss-includes.css. Adding here.--> 
+<!--NOTE: Needs to load before cards.css, or else spacing is thrown off.-->
+<link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/security-image.css" />
+<link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/mss-includes.css" />
+<!--
+Until tabs.css is updated in mss-includes.css, adding here. DELETE ON 4/25
+5/21: Commented out tabs.css direct link to make sure tabs.css is in mss-includes.css. Wait until next release to delete completely.
+-->
+<!--<link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/tabs.css" />-->
+<link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/new-experience-slider.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i" rel="stylesheet" type="text/css">
+<script src="./js/prototype.js"></script>
+<script src="./js/jquery-3.4.1.slim.min.js"></script>
+<link rel="stylesheet" href="./css/mss.css" />
+<style>
+
+
+.invisible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.hidden { display: none; }
+
+
+/* needed for old browsers */
+dialog {
+  display: block;
+  border: 0;
+}
+</style>
+<script> 
+	var $j = jQuery.noConflict();
+</script>
+<script src="./js/ept.js"></script>
+</head>
+<body>
+
+    <div id="main-content" class="mycal-main-content">
+        <div class="calpers-grid">
+            <h1>Confirmation Page</h1>
+            <p>Successfully submitted the transaction</p>
+        </div>
+    </div>
+    
+    <script src="./js/van11y-accessible-modal-window-aria.js"></script>
+    
+</body>
+</html>
