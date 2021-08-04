@@ -57,30 +57,32 @@ dialog {
         <div class="calpers-grid">
             <div class="calpers-columns-column-main">
                 <div class="calpers-section-body">
-
+                    <h2>Page level progress notification</h2>
                     <p id="summary">
                         This HTML5 progress bar has been implemented with <code>aria-live="polite"</code> as the only ARIA in use. The separate announcements by screen readers for the progress bar and textual updates are achieved by putting them in separate live regions.
                     </p>
-        
-                    <progress id="progressBar" max="100" value="0">
-        
-                        <!-- Fallback -->
-                        <div id="progressBarFallback1"><span id="progressBarFallback2">&#160;</span></div>
-        
-                    </progress>
-
-                    <div>
-                        <span id="progressLabel">Progress: </span>
-        
-                        <!-- Separate live region for the progress -->
-                        <span aria-live="polite" id="progressPercent"><strong>0%</strong></span>
-                    </div>
-        
-                    <!-- Separate live region for the message -->
-                    <div aria-live="polite" id="message">Click the start button to begin testing</div>
                     
-                    <button id="startButton" class="mycal-button mycal-button-primary">Start</button>
-                    <button id="resetButton" class="mycal-button mycal-button-secondary">Reset</button>
+                    <span id="progressSection">
+                        <progress id="progressBar" max="100" value="0">
+            
+                            <!-- Fallback -->
+                            <div id="progressBarFallback1"><span id="progressBarFallback2">&#160;</span></div>
+            
+                        </progress>
+
+                        <div>
+                            <span id="progressLabel">Progress: </span>
+            
+                            <!-- Separate live region for the progress -->
+                            <span aria-live="polite" id="progressPercent"><strong>0%</strong></span>
+                        </div>
+                    </span>
+                    <!-- Separate live region for the message -->
+                    <div aria-live="polite" id="message">Click the submit button to begin testing</div>
+                    <p>
+                        <button id="startButton" class="mycal-button mycal-button-primary">Submit</button>
+                        <button id="resetButton" class="mycal-button mycal-button-secondary">Reset</button>
+                    </p>
                 </div>
                 
             </div>
@@ -91,7 +93,7 @@ dialog {
     
     <script>
         (function() {	
-            
+            $('progressSection').hide();
             var updateProgress;
 
             
@@ -129,6 +131,7 @@ dialog {
             updateProgress = updateProgress();
 
             function preStart() {
+                $('progressSection').show();
                 //Simulate a waiting period
                 message.innerHTML = 'Testing will begin shortly';
                 startButton.disabled = true;
@@ -152,6 +155,7 @@ dialog {
 
             function reset () {
 
+                $('progressSection').hide();
                 //Reset the progress meter and manage the button states
                 progressBar.value = 0;
 
