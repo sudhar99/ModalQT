@@ -73,14 +73,14 @@ dialog {
                         <span id="progressLabel">Progress: </span>
         
                         <!-- Separate live region for the progress -->
-                        <span aria-live="polite" id="progressPercent">0%</span>
+                        <span aria-live="polite" id="progressPercent"><strong>0%</strong></span>
                     </div>
         
                     <!-- Separate live region for the message -->
                     <div aria-live="polite" id="message">Click the start button to begin testing</div>
                     
-                    <button id="startButton">Start</button>
-                    <button id="resetButton">Reset</button>
+                    <button id="startButton" class="mycal-button mycal-button-primary">Start</button>
+                    <button id="resetButton" class="mycal-button mycal-button-secondary">Reset</button>
                 </div>
                 
             </div>
