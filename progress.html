@@ -58,7 +58,7 @@ dialog {
             <h1>Progress Bar Samples</h1>
             <div class="calpers-columns-column-main">
                 <div class="calpers-section-body">
-                    <h2>Page level fake progress notification</h2>
+                    <h2>Page level fake determinate progress notification</h2>
                     <p id="summary">
                         This HTML5 progress bar has been implemented with <code>aria-live="polite"</code> as the only ARIA in use. The separate announcements by screen readers for the progress bar and textual updates are achieved by putting them in separate live regions.
                     </p>
@@ -78,11 +78,25 @@ dialog {
                             <span aria-live="polite" id="progressPercent"><strong>0%</strong></span>
                         </div>
                     </span>
-                    <!-- Separate live region for the message -->
-                    <div aria-live="polite" id="message">Click the submit button to begin testing</div>
+                    
                     <p>
-                        <button id="startButton" class="mycal-button mycal-button-primary">Submit</button>
-                        <button id="resetButton" class="mycal-button mycal-button-secondary">Reset</button>
+                        <button id="deterSubmit" class="mycal-button mycal-button-primary">Submit</button>
+                        <button id="deterReset" class="mycal-button mycal-button-secondary">Reset</button>
+                    </p>
+                </div>
+
+                <div class="calpers-section-body">
+                    <h2>Page level indeterminate progress notification</h2>
+                    <p id="summary">
+                        This HTML5 progress bar has been implemented with <code>aria-live="polite"</code> as the only ARIA in use. The separate announcements by screen readers for the progress bar and textual updates are achieved by putting them in separate live regions.
+                    </p>
+                    
+                    <span id="interProgressSection">
+                        <progress id="progressBar"></progress>
+                    </span>
+                    <p>
+                        <button id="indeterSubmit" class="mycal-button mycal-button-primary">Submit</button>
+                        <button id="indeterReset" class="mycal-button mycal-button-secondary">Reset</button>
                     </p>
                 </div>
                 
@@ -99,11 +113,10 @@ dialog {
 
             
             function updateProgress() {
-                var message, progress, progressBar, progressPercent, startButton, resetButton, intervalId, progressBarFallback2;
+                var message, progress, progressBar, progressPercent, startButton, deterReset, intervalId, progressBarFallback2;
                 progress = 0;
-                message = document.getElementById('message');
-                resetButton = document.getElementById('resetButton');
-                resetButton.disabled = 'true';
+                deterReset = document.getElementById('deterReset');
+                deterReset.disabled = 'true';
                 progressBarFallback2 = document.getElementById('progressBarFallback2');
 
                 return function () {
@@ -122,12 +135,14 @@ dialog {
                         progressPercent.innerHTML = progressBar.value + '%';
                         progress += 10;
                     } else {                       
-                        progress = 0;
-                        stop();
-                        location.href='confirm.html';
+                        showConfirm();                       
                     }
                 }
             }	
+
+            function showConfirm(){
+                location.href='confirm.html';
+            }
 
             //Accessing the closure  
             updateProgress = updateProgress();
@@ -135,24 +150,21 @@ dialog {
             function preStart() {
                 $('progressSection').show();
                 //Simulate a waiting period
-                message.innerHTML = 'Testing will begin shortly';
                 startButton.disabled = true;
-                setTimeout(function() { start(); }, 3000);
+                setTimeout(function() { start(); }, 1000);
             }
 
             function start() {
                 //Start the progress meter 
                 //Disable the start button
-                intervalId = setInterval( function() { updateProgress(); }, 3000); 	
-                message.innerHTML = 'Testing in progress';
+                intervalId = setInterval( function() { updateProgress(); }, 1000); 	
                 startButton.disabled = true;
             } 
 
             function stop() {
                 //Stop the progress meter
                 clearInterval(intervalId);
-                message.innerHTML = 'Testing is complete. Click the Reset button to test again.';
-                resetButton.disabled = false;
+                deterReset.disabled = false;
             }
 
             function reset () {
@@ -166,15 +178,17 @@ dialog {
 
                 progressPercent.innerHTML = progressBar.value + '%';
                 startButton.disabled = false;
-                resetButton.disabled = true;
-                message.innerHTML = 'Click the start button to begin testing';
+                deterReset.disabled = true;
             }
             
             startButton.disabled = false;
             
             //Event Registration
             startButton.onclick = function() { preStart(); };
-            resetButton.onclick = function() { reset(); };
+            deterReset.onclick = function() { reset(); };
+
+            indeterSubmit.onclick = function() { preStart(); };
+            deterReset.onclick = function() { reset(); };
             
         }());
 
