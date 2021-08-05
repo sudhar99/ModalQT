@@ -135,6 +135,7 @@ dialog {
                             progressPercent.innerHTML = progressBar.value + '%';
                         }
                         if(message && indeterSection && indeterSection.visible()){
+                            message.innerHTML = "";
                             message.innerHTML = "Processing";
                         }else{
                             progressBar.value = progress;
