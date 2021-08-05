@@ -139,8 +139,6 @@ dialog {
                 location.href='confirm.html';
             }
 
-            //Accessing the closure  
-            //updateProgress = updateProgress();
 
             function preStart() {
                 $('progressSection').show();
@@ -152,7 +150,9 @@ dialog {
             function start() {
                 //Start the progress meter 
                 //Disable the start button
-                intervalId = setInterval( function() { updateProgress('deterReset', 'progressPercent', 'progressBar', 'deterSubmit'); }, 1000); 	
+                //Accessing the closure  
+                updateProgress = updateProgress('deterReset', 'progressPercent', 'progressBar', 'deterSubmit');
+                intervalId = setInterval( function() { updateProgress(); }, 1000); 	
                 deterSubmit.disabled = true;
             } 
 
