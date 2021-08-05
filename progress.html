@@ -130,12 +130,13 @@ dialog {
                     
                     //Update the progress bar
                     if ( progress <= 90 ) {
-                        progressBar.value = progress;
                         if(progressPercent){                       
                             progressPercent.innerHTML = progressBar.value + '%';
                         }
                         if(message){
                             message.innerHTML = "Processing";
+                        }else{
+                            progressBar.value = progress;
                         }
                         progress += 10;
                     } else {                       
