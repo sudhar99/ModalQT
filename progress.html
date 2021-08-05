@@ -123,7 +123,8 @@ dialog {
                 progressBar = document.getElementById(progressBarId);
                 deterSubmit = document.getElementById(submitButton);
                 message = document.getElementById('indeterStatus');
-                if(message && message.visible()){
+                var indeterSection = document.getElementById('indeterProgressSection');
+                if(message && indeterSection && indeterSection.visible()){
                     message.innerHTML = "";
                 }
                 return function () {
@@ -133,7 +134,7 @@ dialog {
                         if(progressPercent && progressPercent.visible()){                       
                             progressPercent.innerHTML = progressBar.value + '%';
                         }
-                        if(message && message.visible()){
+                        if(message && indeterSection && indeterSection.visible()){
                             message.innerHTML = "Processing";
                         }else{
                             progressBar.value = progress;
