@@ -123,17 +123,17 @@ dialog {
                 progressBar = document.getElementById(progressBarId);
                 deterSubmit = document.getElementById(submitButton);
                 message = document.getElementById('indeterStatus');
-                if(message){
+                if(message && message.visible()){
                     message.innerHTML = "";
                 }
                 return function () {
                     
                     //Update the progress bar
                     if ( progress <= 90 ) {
-                        if(progressPercent){                       
+                        if(progressPercent && progressPercent.visible()){                       
                             progressPercent.innerHTML = progressBar.value + '%';
                         }
-                        if(message){
+                        if(message && message.visible()){
                             message.innerHTML = "Processing";
                         }else{
                             progressBar.value = progress;
