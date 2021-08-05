@@ -100,7 +100,33 @@ dialog {
                         <button id="indeterReset" class="mycal-button mycal-button-secondary">Reset</button>
                     </p>
                 </div>
-                
+
+                <div class="calpers-section-body">
+                    <h2>Modal progress notification</h2>
+                    <p id="summary">
+                        Opens a progress Modal.
+                    </p>
+                    
+                    <p>
+                        <button id="modalProgress"
+                            class="js-modal button mycal-button" 
+                            data-modal-prefix-class="mycal"
+                            data-modal-content-id="modal-content-01"
+                            data-modal-title="Processing"
+                            data-modal-describedby-id="modal-focus"
+                            >Progress Modal</button>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div id="modal-content-01" class="mycal-hide">
+            <div class="mycal-modal-content-text">
+                <p id="modal-focus">Your request is being processed.</p>
+                <span id="modalProgressSection" class="progressClass">
+                    <progress id="modalProgressBar"></progress>
+                    <span aria-live="polite" id="indeterStatus" class="mycal-sr-only">Processing</span>
+                </span>
             </div>
         </div>
     </div>
@@ -164,7 +190,7 @@ dialog {
                 //Disable the start button
                 //Accessing the closure  
                 updateProgress = updateProgress('deterReset', 'progressPercent', 'progressBar', 'deterSubmit');
-                intervalId = setInterval( function() { updateProgress(); }, 1000); 	
+                intervalId = setInterval( function() { updateProgress(); }, 2000); 	
                 deterSubmit.disabled = true;
             } 
 
@@ -174,7 +200,13 @@ dialog {
                 indeterSubmit.disabled = true;
                 //Accessing the closure  
                 updateProgress = updateProgress('indeterReset', 'progressPercent', 'indeterprogressBar', 'indeterSubmit');
-                intervalId = setInterval( function() { updateProgress(); }, 1000); 	
+                intervalId = setInterval( function() { updateProgress(); }, 2000); 	
+                indeterSubmit.disabled = true;
+            } 
+
+            function modalStart() {
+                updateProgress = updateProgress('modalReset', 'progressPercent', 'modalProgressBar', 'indeterSubmit');
+                intervalId = setInterval( function() { updateProgress(); }, 2000); 	
                 indeterSubmit.disabled = true;
             } 
 
@@ -203,6 +235,8 @@ dialog {
 
             indeterSubmit.onclick = function() { indeterStart(); };
             deterReset.onclick = function() { reset(); };
+            
+            modalProgress.onclick = function() { modalStart(); };
             
         }());
 
