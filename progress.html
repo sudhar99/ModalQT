@@ -118,11 +118,12 @@ dialog {
                 deterReset = document.getElementById(resetButton);
                 deterReset.disabled = 'true';
                 
-                return function () {
-                    progressPercent = document.getElementById(progressPcnt);
-                    progressBar = document.getElementById(progressBar);
-                    deterSubmit = document.getElementById(submitButton);
+                progressPercent = document.getElementById(progressPcnt);
+                progressBar = document.getElementById(progressBar);
+                deterSubmit = document.getElementById(submitButton);
 
+                return function () {
+                    
                     //Update the progress bar
                     if ( progress <= 90 ) {
                         progressBar.value = progress;                       
