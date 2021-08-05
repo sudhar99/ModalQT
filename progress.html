@@ -91,8 +91,9 @@ dialog {
                         This HTML5 progress bar has been implemented with <code>aria-live="polite"</code> as the only ARIA in use. The separate announcements by screen readers for the progress bar and textual updates are achieved by putting them in separate live regions.
                     </p>
                     
-                    <span id="interProgressSection" class="progressClass">
-                        <progress id="progressBar"></progress>
+                    <span id="indeterProgressSection" class="progressClass">
+                        <progress id="indeterprogressBar"></progress>
+                        <span aria-live="polite" id="indeterStatus" class="mycal-sr-only">Processing</span>
                     </span>
                     <p>
                         <button id="indeterSubmit" class="mycal-button mycal-button-primary">Submit</button>
@@ -121,13 +122,21 @@ dialog {
                 progressPercent = document.getElementById(progressPcnt);
                 progressBar = document.getElementById(progressBar);
                 deterSubmit = document.getElementById(submitButton);
-
+                message = document.getElementById(indeterStatus);
+                if(message){
+                    message.innerHTML = "";
+                }
                 return function () {
                     
                     //Update the progress bar
                     if ( progress <= 90 ) {
-                        progressBar.value = progress;                       
-                        progressPercent.innerHTML = progressBar.value + '%';
+                        progressBar.value = progress;
+                        if(progressPercent){                       
+                            progressPercent.innerHTML = progressBar.value + '%';
+                        }
+                        if(message){
+                            message.innerHTML = "Processing";
+                        }
                         progress += 10;
                     } else {                       
                         showConfirm();                       
@@ -156,6 +165,16 @@ dialog {
                 deterSubmit.disabled = true;
             } 
 
+            function indeterStart() {
+                $('indeterProgressSection').show();
+                //Simulate a waiting period
+                indeterSubmit.disabled = true;
+                //Accessing the closure  
+                updateProgress = updateProgress('indeterReset', 'progressPercent', 'indeterProgressBar', 'indeterSubmit');
+                intervalId = setInterval( function() { updateProgress(); }, 1000); 	
+                indeterSubmit.disabled = true;
+            } 
+
             function stop() {
                 //Stop the progress meter
                 clearInterval(intervalId);
@@ -167,9 +186,6 @@ dialog {
                 $('progressSection').hide();
                 //Reset the progress meter and manage the button states
                 progressBar.value = 0;
-
-                //Reset the fallback width
-                progressBarFallback2.style.width = 0;
 
                 progressPercent.innerHTML = progressBar.value + '%';
                 deterSubmit.disabled = false;
