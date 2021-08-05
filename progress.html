@@ -232,11 +232,11 @@ dialog {
     </script>
     <script>
         function openModal() {
+            modalStart();
             Ept.createDialog('#modal-content-01', 
                 {
                     title: 'Processing'                   					
                 });	
-            modalStart();	
         }
         function updateModalProgress() {
             var message, progress, progressBar, progressPercent, deterSubmit, deterReset, intervalId, progressBarFallback2;
