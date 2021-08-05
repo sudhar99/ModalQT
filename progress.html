@@ -109,7 +109,7 @@ dialog {
                     
                     <p>
                         <button id="modalProgress"
-                            class="js-modal button mycal-button"
+                            class="js-modal button mycal-button" onclick="openModal();"
                             >Progress Modal<span class="mycal-sr-only">opens a modal</span></button>
                     </p>
                 </div>
@@ -169,22 +169,6 @@ dialog {
                 }
             }	
 
-            function updateModalProgress() {
-                var message, progress, progressBar, progressPercent, deterSubmit, deterReset, intervalId, progressBarFallback2;
-                progress = 0;
-                message = document.getElementById('modalStatus');
-                return function () {
-                    
-                    //Update the progress bar
-                    if ( progress <= 90 ) {
-                        message.innerHTML = "Processing";
-                        progress += 10;
-                    } else {                       
-                        showConfirm();                       
-                    }
-                }
-            }	
-
             function showConfirm(){
                 location.href='confirm.html';
             }
@@ -216,12 +200,6 @@ dialog {
                 indeterSubmit.disabled = true;
             } 
 
-            function modalStart() {
-                updateProgress = updateModalProgress();
-                intervalId = setInterval( function() { updateProgress(); }, 2000); 	
-                indeterSubmit.disabled = true;
-            } 
-
             function stop() {
                 //Stop the progress meter
                 clearInterval(intervalId);
@@ -238,14 +216,7 @@ dialog {
                 deterSubmit.disabled = false;
                 deterReset.disabled = true;
             }
-            
-            function openModal() {
-                Ept.createDialog('#modal-content-01', 
-                    {
-                        title: 'Processing'                   					
-                    });	
-                modalStart();	
-            }
+                        
             deterSubmit.disabled = false;
             
             //Event Registration
@@ -255,9 +226,38 @@ dialog {
             indeterSubmit.onclick = function() { indeterStart(); };
             deterReset.onclick = function() { reset(); };
             
-            modalProgress.onclick = function() { openModal(); };
+            //modalProgress.onclick = function() { openModal(); };
             
         }());        
+    </script>
+    <script>
+        function openModal() {
+            Ept.createDialog('#modal-content-01', 
+                {
+                    title: 'Processing'                   					
+                });	
+            modalStart();	
+        }
+        function updateModalProgress() {
+            var message, progress, progressBar, progressPercent, deterSubmit, deterReset, intervalId, progressBarFallback2;
+            progress = 0;
+            message = document.getElementById('modalStatus');
+            return function () {
+                
+                //Update the progress bar
+                if ( progress <= 90 ) {
+                    message.innerHTML = "Processing";
+                    progress += 10;
+                } else {                       
+                    showConfirm();                       
+                }
+            }
+        }
+        function modalStart() {
+            updateProgress = updateModalProgress();
+            intervalId = setInterval( function() { updateProgress(); }, 2000); 	
+            indeterSubmit.disabled = true;
+        } 
     </script>
 </body>
 </html>
