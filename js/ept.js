@@ -85,6 +85,33 @@ var Ept = function() {
 			 }
 		})		
 	}
+
+	// Private	
+	function createProgressModal() {	
+		//$j('.'+currentModalClass).remove();
+		//$j('#'+currentDialogContentId).remove();			
+		$j('h1').after('<div class="js-modal '+ currentModalClass+'" data-modal-prefix-class="mycal" data-modal-content-id = "'+currentDialogContentId+'" data-focus-back = "'+ focusIdAfterDialogClose +'" data-modal-title = "'+ Processing + '" data-modal-describedby-id="'+modalAriaDescId+'" ></div>');
+		//const buttonsDiv = createButtonCluster(buttonObject);
+		$j('h1').after('<div class="mycal-sr-only" id="'+currentDialogContentId+'"></div>');
+		$j('#'+currentDialogContentId).append('<p>Your request is being processed</p><progress id="modalProgressBar"></progress><span aria-live="polite" id="modalStatus" class="mycal-sr-only"></span>');
+		//Wrap aria-describedby id around the modal body, before adding the buttons. Add this ONLY if mss-modal-desc-id is not present in body
+		//if(body.indexOf(modalAriaDescId) == -1){
+			$j('#'+currentDialogContentId).html('<span id="'+modalAriaDescId+'">'+$j('#'+currentDialogContentId).html()+'</span>');
+		//}
+		//$j('#'+currentDialogContentId).append(buttonsDiv);
+		$j('.'+currentModalClass).trigger('click');
+		/*buttonObject.forEach(function(button, index) {
+			 let buttonId = button.id;			 
+			 if(button.click){
+				 document.getElementById(buttonId).addEventListener('click', button.click);
+				 document.getElementById(buttonId).addEventListener('keydown', function (e) {
+					    if (e.keyCode === 13) {
+					    	button.click();
+					    }
+					});
+			 }
+		})*/		
+	}
 		
 	// Public
 	return {

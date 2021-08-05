@@ -109,7 +109,7 @@ dialog {
                     
                     <p>
                         <button id="modalProgress"
-                            class="js-modal button mycal-button" onclick="openModal();"
+                            class="js-modal button mycal-button" onclick="createProgressModal();"
                             >Progress Modal<span class="mycal-sr-only">opens a modal</span></button>
                     </p>
                 </div>
@@ -121,7 +121,7 @@ dialog {
                 <p>Your request is being processed.</p>
                 <span id="modalProgressSection">
                     <progress id="modalProgressBar"></progress>
-                    <span aria-live="polite" id="modalStatus" class="mycal-sr-only"></span>
+                    
                 </span>
             </div>
         </div>
@@ -232,11 +232,12 @@ dialog {
     </script>
     <script>
         function openModal() {
-            modalStart();
+            
             Ept.createDialog('#modal-content-01', 
                 {
                     title: 'Processing'                   					
-                });	
+                });
+            modalStart();	
         }
         function updateModalProgress() {
             var message, progress, progressBar, progressPercent, deterSubmit, deterReset, intervalId, progressBarFallback2;
