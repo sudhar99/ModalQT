@@ -110,9 +110,6 @@ dialog {
                     <p>
                         <button id="modalProgress"
                             class="js-modal button mycal-button" 
-                            data-modal-prefix-class="mycal"
-                            data-modal-content-id="modal-content-01"
-                            data-modal-title="Processing"
                             >Progress Modal<span class="mycal-sr-only">opens a modal</span></button>
                     </p>
                 </div>
@@ -251,10 +248,18 @@ dialog {
             indeterSubmit.onclick = function() { indeterStart(); };
             deterReset.onclick = function() { reset(); };
             
-            modalProgress.onclick = function() { modalStart(); };
+            modalProgress.onclick = function() { openModal(); };
             
-        }());
-
+        }());        
+    </script>
+    <script>
+        function openModal() {
+            Ept.createDialog('#modal-content-01', 
+                {
+                    title: 'Processing'                   					
+                });	
+            modalStart();	
+        }
     </script>
 </body>
 </html>
