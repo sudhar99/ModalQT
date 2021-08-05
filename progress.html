@@ -113,14 +113,14 @@ dialog {
             var updateProgress;
 
             
-            function updateProgress(resetButton, progressPcnt, progressBar, submitButton) {
+            function updateProgress(resetButton, progressPcnt, progressBarId, submitButton) {
                 var message, progress, progressBar, progressPercent, deterSubmit, deterReset, intervalId, progressBarFallback2;
                 progress = 0;
                 deterReset = document.getElementById(resetButton);
                 deterReset.disabled = 'true';
                 
                 progressPercent = document.getElementById(progressPcnt);
-                progressBar = document.getElementById(progressBar);
+                progressBar = document.getElementById(progressBarId);
                 deterSubmit = document.getElementById(submitButton);
                 message = document.getElementById('indeterStatus');
                 if(message){
