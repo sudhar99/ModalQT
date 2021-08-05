@@ -63,7 +63,7 @@ dialog {
                         This HTML5 progress bar has been implemented with <code>aria-live="polite"</code> as the only ARIA in use. The separate announcements by screen readers for the progress bar and textual updates are achieved by putting them in separate live regions.
                     </p>
                     
-                    <span id="progressSection">
+                    <span id="progressSection" class="progressClass">
                         <progress id="progressBar" max="100" value="0">
             
                             <!-- Fallback -->
@@ -91,7 +91,7 @@ dialog {
                         This HTML5 progress bar has been implemented with <code>aria-live="polite"</code> as the only ARIA in use. The separate announcements by screen readers for the progress bar and textual updates are achieved by putting them in separate live regions.
                     </p>
                     
-                    <span id="interProgressSection">
+                    <span id="interProgressSection" class="progressClass">
                         <progress id="progressBar"></progress>
                     </span>
                     <p>
@@ -108,30 +108,24 @@ dialog {
     
     <script>
         (function() {	
-            $('progressSection').hide();
+            for (let el of document.querySelectorAll('.progressClass')) $(el).hide();
             var updateProgress;
 
             
-            function updateProgress() {
+            function updateProgress(resetButton, progressPcnt, progressBar, submitButton) {
                 var message, progress, progressBar, progressPercent, deterSubmit, deterReset, intervalId, progressBarFallback2;
                 progress = 0;
-                deterReset = document.getElementById('deterReset');
+                deterReset = document.getElementById(resetButton);
                 deterReset.disabled = 'true';
-                progressBarFallback2 = document.getElementById('progressBarFallback2');
-
+                
                 return function () {
-                    progressPercent = document.getElementById('progressPercent');
-                    progressBar = document.getElementById('progressBar');
-                    deterSubmit = document.getElementById('deterSubmit');
+                    progressPercent = document.getElementById(progressPcnt);
+                    progressBar = document.getElementById(progressBar);
+                    deterSubmit = document.getElementById(submitButton);
 
                     //Update the progress bar
                     if ( progress <= 90 ) {
-                        progressBar.value = progress;
-
-                        //First update the fallback width
-                        progressBarFallback2.style.width = progress + '%';
-
-                        
+                        progressBar.value = progress;                       
                         progressPercent.innerHTML = progressBar.value + '%';
                         progress += 10;
                     } else {                       
@@ -157,7 +151,7 @@ dialog {
             function start() {
                 //Start the progress meter 
                 //Disable the start button
-                intervalId = setInterval( function() { updateProgress(); }, 1000); 	
+                intervalId = setInterval( function() { updateProgress('deterReset', 'progressPercent', 'progressBar', 'deterSubmit'); }, 1000); 	
                 deterSubmit.disabled = true;
             } 
 
