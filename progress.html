@@ -173,6 +173,22 @@ dialog {
                 }
             }	
 
+            function updateModalProgress() {
+                var message, progress, progressBar, progressPercent, deterSubmit, deterReset, intervalId, progressBarFallback2;
+                progress = 0;
+                message = document.getElementById('modalStatus');
+                return function () {
+                    
+                    //Update the progress bar
+                    if ( progress <= 90 ) {
+                        message.innerHTML = "Processing";
+                        progress += 10;
+                    } else {                       
+                        showConfirm();                       
+                    }
+                }
+            }	
+
             function showConfirm(){
                 location.href='confirm.html';
             }
@@ -205,7 +221,7 @@ dialog {
             } 
 
             function modalStart() {
-                updateProgress = updateProgress('modalReset', 'progressPercent', 'modalProgressBar', 'indeterSubmit');
+                updateProgress = updateModalProgress();
                 intervalId = setInterval( function() { updateProgress(); }, 2000); 	
                 indeterSubmit.disabled = true;
             } 
