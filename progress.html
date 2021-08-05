@@ -113,7 +113,7 @@ dialog {
 
             
             function updateProgress() {
-                var message, progress, progressBar, progressPercent, startButton, deterReset, intervalId, progressBarFallback2;
+                var message, progress, progressBar, progressPercent, deterSubmit, deterReset, intervalId, progressBarFallback2;
                 progress = 0;
                 deterReset = document.getElementById('deterReset');
                 deterReset.disabled = 'true';
@@ -122,7 +122,7 @@ dialog {
                 return function () {
                     progressPercent = document.getElementById('progressPercent');
                     progressBar = document.getElementById('progressBar');
-                    startButton = document.getElementById('startButton');
+                    deterSubmit = document.getElementById('deterSubmit');
 
                     //Update the progress bar
                     if ( progress <= 90 ) {
@@ -150,7 +150,7 @@ dialog {
             function preStart() {
                 $('progressSection').show();
                 //Simulate a waiting period
-                startButton.disabled = true;
+                deterSubmit.disabled = true;
                 setTimeout(function() { start(); }, 1000);
             }
 
@@ -158,7 +158,7 @@ dialog {
                 //Start the progress meter 
                 //Disable the start button
                 intervalId = setInterval( function() { updateProgress(); }, 1000); 	
-                startButton.disabled = true;
+                deterSubmit.disabled = true;
             } 
 
             function stop() {
@@ -177,14 +177,14 @@ dialog {
                 progressBarFallback2.style.width = 0;
 
                 progressPercent.innerHTML = progressBar.value + '%';
-                startButton.disabled = false;
+                deterSubmit.disabled = false;
                 deterReset.disabled = true;
             }
             
-            startButton.disabled = false;
+            deterSubmit.disabled = false;
             
             //Event Registration
-            startButton.onclick = function() { preStart(); };
+            deterSubmit.onclick = function() { preStart(); };
             deterReset.onclick = function() { reset(); };
 
             indeterSubmit.onclick = function() { preStart(); };
