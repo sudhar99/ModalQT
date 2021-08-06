@@ -92,9 +92,9 @@ var Ept = function() {
 		$j('h1').after('<div class="mycal-sr-only" id="'+currentDialogContentId+'"></div>');
 		$j('#'+currentDialogContentId).append('<p>Your request is being processed</p><progress id="modalProgressBar"></progress>');
 
-		$j('#'+currentDialogContentId).html('<span id="'+modalAriaDescId+'">'+$j('#'+currentDialogContentId).html()+'</span>');
-
-		setTimeout(function() { $j('.'+currentModalClass).trigger('click'); }, 1000);
+		$j('#'+currentDialogContentId).html('<div id="currentDialog">'+$j('#'+currentDialogContentId).html()+'</div>');
+		//Trigger modal pop-up after a second
+		setTimeout(function() { $j('.'+currentModalClass).trigger('click'); }, 500);
 		
 	}
 		
