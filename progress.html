@@ -116,15 +116,6 @@ dialog {
 
             </div>
         </div>
-        <div id="modal-content-01" class="mycal-hide">
-            <div class="mycal-modal-content-text">
-                <p>Your request is being processed.</p>
-                <span id="modalProgressSection">
-                    <progress id="modalProgressBar"></progress>
-                    
-                </span>
-            </div>
-        </div>
     </div>
     
     <script src="./js/van11y-accessible-modal-window-aria.js"></script>
@@ -226,39 +217,7 @@ dialog {
             indeterSubmit.onclick = function() { indeterStart(); };
             deterReset.onclick = function() { reset(); };
             
-            //modalProgress.onclick = function() { openModal(); };
-            
         }());        
-    </script>
-    <script>
-        function openModal() {
-            
-            Ept.createDialog('#modal-content-01', 
-                {
-                    title: 'Processing'                   					
-                });
-            modalStart();	
-        }
-        function updateModalProgress() {
-            var message, progress, progressBar, progressPercent, deterSubmit, deterReset, intervalId, progressBarFallback2;
-            progress = 0;
-            message = document.getElementById('modalStatus');
-            return function () {
-                
-                //Update the progress bar
-                if ( progress <= 90 ) {
-                    message.innerHTML = "Processing";
-                    progress += 10;
-                } else {                       
-                    location.href='confirm.html';                  
-                }
-            }
-        }
-        function modalStart() {
-            updateProgress = updateModalProgress();
-            intervalId = setInterval( function() { updateProgress(); }, 2000); 	
-            indeterSubmit.disabled = true;
-        } 
-    </script>
+    </script>   
 </body>
 </html>
