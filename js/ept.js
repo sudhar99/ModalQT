@@ -92,7 +92,7 @@ var Ept = function() {
 		$j('h1').after('<div class="mycal-sr-only" id="'+currentDialogContentId+'"></div>');
 		$j('#'+currentDialogContentId).append('<p>Your request is being processed</p><progress id="modalProgressBar"></progress><span aria-live="polite" id="modalStatus" class="mycal-sr-only"></span>');
 
-			//$j('#'+currentDialogContentId).html('<span id="'+modalAriaDescId+'">'+$j('#'+currentDialogContentId).html()+'</span>');
+		$j('#'+currentDialogContentId).html('<span id="'+modalAriaDescId+'">'+$j('#'+currentDialogContentId).html()+'</span>');
 
 		$j('.'+currentModalClass).trigger('click');
 	}
