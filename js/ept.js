@@ -90,7 +90,7 @@ var Ept = function() {
 	function createProgressModal() {	
 		//$j('.'+currentModalClass).remove();
 		//$j('#'+currentDialogContentId).remove();			
-		$j('h1').after('<div class="js-modal '+ currentModalClass+'" data-modal-prefix-class="mycal" data-modal-content-id = "'+currentDialogContentId+'" data-focus-back = "'+ focusIdAfterDialogClose +'" data-modal-title = "'+ Processing + '" data-modal-describedby-id="'+modalAriaDescId+'" ></div>');
+		$j('h1').after('<div class="js-modal '+ currentModalClass+'" data-modal-prefix-class="mycal" data-modal-content-id = "'+currentDialogContentId+'" data-focus-back = "'+ focusIdAfterDialogClose +'" data-modal-title = "Processing" data-modal-describedby-id="'+modalAriaDescId+'" ></div>');
 		//const buttonsDiv = createButtonCluster(buttonObject);
 		$j('h1').after('<div class="mycal-sr-only" id="'+currentDialogContentId+'"></div>');
 		$j('#'+currentDialogContentId).append('<p>Your request is being processed</p><progress id="modalProgressBar"></progress><span aria-live="polite" id="modalStatus" class="mycal-sr-only"></span>');
