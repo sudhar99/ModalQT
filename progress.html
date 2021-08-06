@@ -148,8 +148,11 @@ dialog {
                             progressPercent.innerHTML = progressBar.value + '%';
                         }
                         if(message && indeterSection && indeterSection.visible()){
-                            message.innerHTML = "";
-                            message.innerHTML = "Processing";
+                            if(progress % 20 == 0){
+                                message.innerHTML = "";
+                            }else{
+                                message.innerHTML = "Processing";
+                            }
                         }else{
                             progressBar.value = progress;
                         }
