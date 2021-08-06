@@ -173,11 +173,11 @@ var Ept = function() {
 		},
 		
 		progressModal : function() {
-			this.createProgressModal("Processing");
+			createProgressModal("Processing");
 		},
 
 		createSimpleDialog : function(options) {
-			createDialog(null, options);			
+			this.createDialog(null, options);			
 		},
 		
 		showAlert : function(body, heading) {
