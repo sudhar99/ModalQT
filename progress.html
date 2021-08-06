@@ -121,8 +121,9 @@ dialog {
     <script src="./js/van11y-accessible-modal-window-aria.js"></script>
     
     <script>
-        (function() {	
-            for (let el of document.querySelectorAll('.progressClass')) $(el).hide();
+        (function() {
+            $j('.progressClass').hide();	
+            //for (let el of document.querySelectorAll('.progressClass')) $(el).hide();
             var updateProgress;
 
             
