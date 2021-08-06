@@ -94,7 +94,8 @@ var Ept = function() {
 
 		$j('#'+currentDialogContentId).html('<span id="'+modalAriaDescId+'">'+$j('#'+currentDialogContentId).html()+'</span>');
 
-		$j('.'+currentModalClass).trigger('click');
+		setTimeout(function() { $j('.'+currentModalClass).trigger('click'); }, 1000);
+		
 	}
 		
 	// Public
