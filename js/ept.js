@@ -177,7 +177,7 @@ var Ept = function() {
 		},
 
 		createSimpleDialog : function(options) {
-			this.createDialog(null, options);			
+			createDialog(null, options);			
 		},
 		
 		showAlert : function(body, heading) {
