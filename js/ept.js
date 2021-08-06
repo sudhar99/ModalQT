@@ -188,6 +188,10 @@ var Ept = function() {
 			
 		},
 		
+		progressModal : function() {
+			this.createProgressModal();
+		},
+
 		createSimpleDialog : function(options) {
 			this.createDialog(null, options);			
 		},
