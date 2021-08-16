@@ -91,7 +91,7 @@ var Ept = function() {
 		//$j('#'+focusIdAfterDialogClose).attr('disabled', true);
 		$j('h1').after('<div class="js-modal '+ currentModalClass+'" data-modal-prefix-class="mycal" data-modal-content-id = "'+currentDialogContentId+'" data-focus-back = "'+ focusIdAfterDialogClose +'" data-modal-title = "'+ heading + '" data-modal-describedby-id="currentDialog" ></div>');
 		$j('h1').after('<div class="mycal-sr-only" id="'+currentDialogContentId+'"></div>');
-		$j('#'+currentDialogContentId).append('<p>Your request is being processed</p><progress id="modalProgressBar"></progress>');
+		$j('#'+currentDialogContentId).append('<p>Avoid selecting Refresh or Back in the browser</p><progress id="modalProgressBar"></progress>');
 
 		$j('#'+currentDialogContentId).html('<div id="currentDialog">'+$j('#'+currentDialogContentId).html()+'</div>');
 		//Trigger modal pop-up after a second
