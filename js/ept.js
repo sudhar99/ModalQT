@@ -41,7 +41,7 @@ var Ept = function() {
 	
 	function createButtonCluster(buttons) {
 		const buttonsDiv = document.createElement("div");
-		buttonsDiv.className  = 'calpers-buttons';
+		buttonsDiv.className  = 'calpers-buttons mycal-hide';
 		buttons.forEach(function(button, index) {
 			 let buttonId = currentDialogContentId+"button"+index;
 			 const buttonElement = document.createElement("button");
