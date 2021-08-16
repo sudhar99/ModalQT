@@ -95,7 +95,8 @@ var Ept = function() {
 
 		$j('#'+currentDialogContentId).html('<div id="currentDialog">'+$j('#'+currentDialogContentId).html()+'</div>');
 		//Trigger modal pop-up after a second
-		setTimeout(function() { $j('.'+currentModalClass).trigger('click'); }, 100);
+		$j('.'+currentModalClass).trigger('click');
+		//setTimeout(function() {  }, 100);
 		
 	}
 		
