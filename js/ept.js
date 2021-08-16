@@ -43,6 +43,7 @@ var Ept = function() {
 		const buttonsDiv = document.createElement("div");
 		buttonsDiv.className  = 'calpers-buttons';
 		buttons.forEach(function(button, index) {
+			
 			 let buttonId = currentDialogContentId+"button"+index;
 			 const buttonElement = document.createElement("button");
 			 buttonElement.type = "button";
