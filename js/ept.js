@@ -93,9 +93,10 @@ var Ept = function() {
 		$j('h1').after('<div class="mycal-sr-only" id="'+currentDialogContentId+'"></div>');
 		$j('#'+currentDialogContentId).append('<p>Avoid selecting Refresh or Back in the browser</p><progress id="modalProgressBar"></progress>');
 
-		$j('#'+currentDialogContentId).html('<div tabindex=-1 id="currentDialog">'+$j('#'+currentDialogContentId).html()+'</div>');
+		$j('#'+currentDialogContentId).html('<div tabindex=0 id="currentDialog">'+$j('#'+currentDialogContentId).html()+'</div>');
 		//Trigger modal pop-up after a second
 		$j('.'+currentModalClass).trigger('click');
+		$j('#currentDialog').focus();
 		//setTimeout(function() {  }, 100);
 		
 	}
