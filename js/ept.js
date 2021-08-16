@@ -97,6 +97,7 @@ var Ept = function() {
 		//Trigger modal pop-up after a second
 		$j('.'+currentModalClass).trigger('click');
 		$j('#currentDialog').focus();
+		
 		//setTimeout(function() {  }, 100);
 		
 	}
