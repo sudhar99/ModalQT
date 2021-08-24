@@ -58,6 +58,14 @@ dialog {
             <h1>Progress Bar Samples</h1>
             <div class="calpers-columns-column-main">
                 <div class="calpers-section-body">
+                    <h2>Test for number key pad.</h2>
+                    <div class="tablet:grid-col-5">
+                        <span id="cid-lbl"><label for="cid">CalPERS ID&nbsp;<span class="required">(required)</span></label></span>
+                        <br>
+                        <input id="cid" name="cid" class="requiredTextField mycal-input" type="number" value="" size="15" maxlength="12" onblur="requiredTextFieldValidation(this);">
+                    </div>
+                </div>
+                <div class="calpers-section-body">
                     <h2>Page level fake determinate progress notification</h2>
                     <p id="summary">
                         This HTML5 progress bar has been implemented with <code>aria-live="polite"</code> as the only ARIA in use. The separate announcements by screen readers for the progress bar and textual updates are achieved by putting them in separate live regions.
@@ -93,7 +101,7 @@ dialog {
                     
                     <span id="indeterProgressSection" class="progressClass">
                         <progress id="indeterprogressBar"></progress>
-                        <span aria-live="polite" id="indeterStatus" class="mycal-sr-only">Processing</span>
+                        <span aria-live="polite" aria-atomic="true"id="indeterStatus" class="mycal-sr-only">Processing</span>
                     </span>
                     <p>
                         <button id="indeterSubmit" class="mycal-button mycal-button-primary">Submit</button>
