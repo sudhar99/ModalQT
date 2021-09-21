@@ -112,15 +112,16 @@ dialog {
             } else {
                 var a = document.createElement("a");
                 document.body.appendChild(a);
-                var url = window.URL.createObjectURL(blob);
+                var url;
+                if ( window.webkitURL ) {
+                    url = window.webkitURL.createObjectURL( blob );
+                }else{
+                    url = window.URL.createObjectURL(blob);
+                }
                 a.href = url;
                 //a.download = filename;
                 a.target = '_blank';
                 a.click();
-                /*setTimeout(function () {
-                    window.URL.revokeObjectURL(url);
-                    document.body.removeChild(a);
-                }, 0);*/
             }
         }
       
