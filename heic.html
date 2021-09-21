@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
  <meta charset="utf-8" />
- <title>Accessible Progress bar - Samples </title>
+ <title>Convert HEIC to JPG - POC </title>
 
 <!-- CSS Includes -->
 <link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/uswds-2_4-mycal.css" />
@@ -56,7 +56,7 @@ dialog {
 
     <div id="main-content" class="mycal-main-content">
         <div class="calpers-grid">
-            <h1>Convert HEIC to JPEG</h1>
+            <h1>Convert HEIC to JPG</h1>
             <div class="calpers-columns-column-main">
                 <div class="calpers-section-body">
                     <div>
@@ -65,8 +65,7 @@ dialog {
                         <p>
                             <i style="font-size: 13px;">
                                 Result will be converted to
-                                <code>gif</code> and downloaded to your
-                                device once the conversion is done
+                                <code>jpg</code> and opened in a new tab once the conversion is done
                             </i>
                         </p>
                         <p>
@@ -88,10 +87,10 @@ dialog {
             var blob = ev.target.files[0];
             heic2any({
                 blob: blob,
-                toType: "image/gif",
+                toType: "image/jpeg",
             })
             .then(function (resultBlob) {
-                saveFile(resultBlob, blob.name + ".gif");
+                saveFile(resultBlob, blob.name + ".jpg");
             })
             .catch(function (x) {
                 document.getElementById("error-on-try").style.display = "block";
