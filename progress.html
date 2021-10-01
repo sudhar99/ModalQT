@@ -61,10 +61,17 @@ dialog {
                     <h2>Test for number key pad.</h2>
                     <p></p>
                     <div class="tablet:grid-col-5">
-                        <span id="cid-lbl"><label for="cid">CalPERS ID&nbsp;<span class="required">(required)</span></label></span>
+                        <span id="cid-lbl"><label for="cid">CalPERS ID&nbsp; with decimal<span class="required">(required)</span></label></span>
                         <br>
                         <input id="cid" name="cid" class="requiredTextField mycal-input" inputmode=”decimal”
                         type="number" step="any" value="" size="15" maxlength="12" onblur="requiredTextFieldValidation(this);">
+                    </div>
+                    <br/>
+                    <div class="tablet:grid-col-5">
+                        <span id="cid-lbl"><label for="cid">CalPERS ID&nbsp; without decimal<span class="required">(required)</span></label></span>
+                        <br>
+                        <input id="cid" name="cid" class="requiredTextField mycal-input" inputmode=”decimal”
+                        type="number" value="" size="15" maxlength="12" onblur="requiredTextFieldValidation(this);">
                     </div>
                 </div>
                 <div class="calpers-section-body">
