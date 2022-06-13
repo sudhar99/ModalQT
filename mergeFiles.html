@@ -1,0 +1,68 @@
+<html>
+<head>
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+</head>
+<body>
+<script language="javascript">
+		let mergedPdfExist = false;
+        const fileTypeMap = new Map();
+        const fileTypeMapIndex = new Map();
+        function readFileAsync(file) {
+             return new Promise((resolve, reject) => {
+                let reader = new FileReader();
+                reader.onload = () => {
+                   resolve(reader.result);
+                };
+                reader.onerror = reject;
+                reader.readAsArrayBuffer(file);
+             })
+        }
+		async function merge(uploadedFiles, fileElementId) {
+		    if(uploadedFiles && uploadedFiles.length > 0 ){
+		        for (var i = 0; i < uploadedFiles.length; i++) {
+		            let currentFile = uploadedFiles[i];
+	        	    if(currentFile.type.indexOf("pdf") >= 0){
+                        fileTypeMap.set("pdf", currentFile);
+                        fileTypeMapIndex.set("pdf", i);
+                        break;
+	        	    }
+		        }
+		    }
+
+	         let PDFDocument = PDFLib.PDFDocument;
+	         const mergedPdf = await PDFDocument.create();
+	         mergedPdfExist = false;
+	         for (var i = 0; i < window.parent.document.getElementById(fileElementId).files.length; i++) {
+	        	 let currentFile = window.parent.document.getElementById(fileElementId).files[i];
+	        	 if(currentFile.type.indexOf("pdf") >= 0){
+	        	    if (!mergedPdfExist && fileTypeMap.has("pdf")){
+	        	        const bytes = await readFileAsync(fileTypeMap.get("pdf"));
+	        	        const currentPdf = await PDFDocument.load(bytes);
+	        		    const copiedPages = await mergedPdf.copyPages(currentPdf, currentPdf.getPageIndices());
+	    	            copiedPages.forEach((page) => mergedPdf.addPage(page));
+	        	    }
+	        	     const bytes = await readFileAsync(currentFile);
+	        	     const currentPdf = await PDFDocument.load(bytes);
+	        		 //const currentPdf = await PDFDocument.load(await currentFile.arrayBuffer());
+	        		 const copiedPages = await mergedPdf.copyPages(currentPdf, currentPdf.getPageIndices());
+	    	         copiedPages.forEach((page) => mergedPdf.addPage(page));
+	    	         mergedPdfExist = true;
+	        	 }else{
+	        		 uploadedFiles.push(currentFile);
+	        	 }
+	         }
+	         if(mergedPdfExist){
+		         const mergedPdfContent = await mergedPdf.save();
+		         const mergedBlob = new Blob([mergedPdfContent], {type: 'application/pdf'});
+		         if(fileTypeMapIndex.has("pdf")){
+		            uploadedFiles[fileTypeMapIndex.get("pdf")] = new File([mergedBlob],'combined.pdf', {type: 'application/pdf'});
+		         }else{
+		            uploadedFiles.push(new File([mergedBlob],'combined.pdf', {type: 'application/pdf'}));
+		         }
+	         }
+            return uploadedFiles;
+
+		}
+		</script>
+</body>
+</html>

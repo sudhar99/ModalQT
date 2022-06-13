@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>myCalPERS - File Merge</title>
+    <!-- CSS Includes -->
+    <link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/uswds-2_4-mycal.css" />
+    <link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/style.css" />
+    <!--Security Image is not included in mss-includes.css. Adding here.-->
+    <!--NOTE: Needs to load before cards.css, or else spacing is thrown off.-->
+    <link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/security-image.css" />
+    <link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/mss-includes.css" />
+    <!--
+    Until tabs.css is updated in mss-includes.css, adding here. DELETE ON 4/25
+    5/21: Commented out tabs.css direct link to make sure tabs.css is in mss-includes.css. Wait until next release to delete completely.
+    -->
+    <!--<link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/tabs.css" />-->
+    <link rel="stylesheet" type="text/css" href="https://my.calpers.ca.gov/web/css/ept-mss/new-experience-slider.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i" rel="stylesheet" type="text/css">
+    <!-- <script src="./js/prototype.js"></script> -->
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="./js/jquery-3.4.1.slim.min.js"></script>
+    <link rel="stylesheet" href="./css/mss.css" />
+    <style>
+
+
+.invisible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.hidden { display: none; }
+
+
+/* needed for old browsers */
+dialog {
+  display: block;
+  border: 0;
+}
+</style>
+    <script>
+	    var $j = jQuery.noConflict();
+    </script>
+    <script src="./js/ept.js"></script>
+
+</head>
+<body>
+
+<div id="bprBanner">
+    THIS IS A DEVELOPMENT ENVIRONMENT
+</div>
+
+<div id="headerDate" class="psrSupportInfo"></div>
+<a class="mycal-skipnav" href="#main-content">Skip to main content</a>
+<div class="mycal-overlay"></div>
+<header class="mycal-masthead" role="banner">
+    <div class="calpers-grid">
+        <a id="headerLogoId" class="mycal-logo" href=https://my.calpers.ca.gov/web/ept/home/myHome.html?__nid=&__lnid=&__participantId=23389613"  >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 339.7 74.6" width="218.573727" height="48" focusable="false">
+                <path d="M131.8 27.8c-1.5-9.6-8.4-14.7-17.9-14.7-12.3 0-21.5 6.7-21.5 24.4 0 13.1 5.7 24.4 19.9 24.4 12.4 0 18-7.5 20.1-16.5h-4.6c-1.7 7.3-6.7 12.7-14.7 12.7-12.6 0-16.4-10.4-16.4-20.8 0-10.9 4.8-20.5 16-20.5 7.9 0 12.8 3 14.6 10.9h4.5v.1z"/>
+                <path d="M162.1 48.4c0 6.8-6 9.7-12.2 9.7-3.7 0-7.2-1.9-7.2-6 0-4.5 3.5-6.6 9.4-7.1 3.3-.3 6.7-.5 10-1.9v5.3zM150.2 42c-7.8 1-11.6 4.4-11.6 10 0 6.4 5.3 9.6 11.1 9.6 4.8 0 9.2-1.9 12.4-5.5.1 2.3.5 4.6 3.1 5 .6.1 1.1.2 1.7.2 1.1 0 2.4-.4 3-.6v-3c-3.3 1.2-4.1.4-4.1-2.6V36.8c0-7.7-5.3-10.4-12.1-10.4-7.3 0-13.1 3.1-13.7 11h3.9c.7-5.8 4.4-7.5 9.7-7.5 6 0 8.3 2.8 8.3 6.8 0 1.2-.1 2.9-1.4 3.5s-3.7 1-5.1 1.1l-5.2.7z" />
+                <path d="M180.4 60.7V14.4h-3.8v46.3z"/>
+                <path d="M193.7 60.7V40.2h9.9c8.6 0 17.7-2.6 17.7-12.9 0-6.9-3.1-12.9-15.1-12.9h-16.9v46.3h4.4zm0-24.2V18.1H205c8.2 0 12 3.1 12 8.9 0 7.8-5.1 9.5-13.2 9.5h-10.1z" />
+                <path d="M259 60.7v-3.8h-27.1V38.6h23.9v-3.8h-23.9V18.1h26.4v-3.7h-30.8v46.3z"/>
+                <path d="M270.5 35.9V18.1h13.9c5.9 0 11.3 1.7 11.3 8.6 0 6.5-5 9.2-11.5 9.2h-13.7zm13.7 3.7c4.4 0 8.2.6 9.2 5.7.7 3.5.3 12.2 2.1 15.4h4.8v-.5c-1.2-.9-1.7-2.8-1.9-9.8-.1-4.9-.4-10.7-5.9-12.5 5.3-2.4 7.5-5.5 7.5-11.3 0-8.6-5.6-12.2-15.8-12.2h-18.1v46.3h4.4v-21h13.7v-.1z" />
+                <path d="M306 46.9c0 10 7.1 15 16.8 15 10.7 0 16.9-5 16.9-13.5 0-17.9-26.2-9.3-28.2-21.3-.8-4.8 2.4-10.2 11.3-10.2 5.9 0 11.4 3 11.4 10.1h4.2c.1-7.5-5.1-13.8-15.6-13.8-10.4 0-15.7 6-15.7 12.4 0 18.2 28.2 8.7 28.2 23 0 5.1-3.5 9.6-11.8 9.6-7.1 0-12.6-3-13.3-11.3H306zM42.8 26.6c1.5.6 2.8 1.6 4 3.1 1 1.2 1.6 2.7 1.9 4.4.2 1.2.3 2.8.3 5.1v21.5h-9.2V38.9c0-1.3-.2-2.4-.6-3.2-.8-1.6-2.3-2.4-4.4-2.4-2.5 0-4.2 1-5.1 3.1-.5 1.1-.7 2.4-.7 3.9v20.4h-9V40.3c0-2-.2-3.5-.6-4.4-.8-1.7-2.2-2.5-4.4-2.5-2.6 0-4.3.8-5.2 2.5-.5.9-.7 2.3-.7 4.2v20.6H0V26.5h8.7v5c1.1-1.8 2.2-3 3.1-3.8 1.7-1.3 4-2 6.8-2 2.6 0 4.7.6 6.3 1.7 1.3 1.1 2.3 2.4 3 4.1 1.2-2 2.6-3.5 4.4-4.4s3.9-1.4 6.2-1.4c1.4 0 2.8.3 4.3.9zM56.7 67.2l1.1.1c.9 0 1.7 0 2.5-.1s1.5-.3 2-.7c.5-.4 1-1.1 1.4-2.2.5-1.1.6-1.8.6-2.1L51.8 26.4h10l7.5 25.2 7.1-25.2h9.5L74.2 60.1c-2.3 6.5-4.1 10.5-5.4 12.1s-4 2.4-7.9 2.4H59c-.5 0-1.2 0-2.2-.1v-7.3h-.1z"/>
+            </svg>
+            <span class="mycal-sr-only">myCalPERS Logo Return to Home Page</span>
+        </a>
+    </div>
+</header>
+
+
+<main id="main-content" class="mycal-main-content">
+
+    <div class="calpers-grid flex-wrap">
+
+        <div class="grid-row">
+            <div class="grid-col-12">
+                <h1>File Merge</h1>
+                <form id="documentForm" action="#" method="post" enctype="multipart/form-data">
+                    <h2>Include Supporting Documents</h2>
+                    <p>Upload any documents that supports your case. You can select multiple documents and all documents of type PDF gets merged into combined.pdf
+                    </p>
+                    <div class="grid-row files">
+                        <div class="tablet:grid-col-6">
+                            <label for="files" id="filesLbl">File Path</label>
+                            <input name="files" type="file" multiple id="files"  />
+                        </div>
+                    </div>
+                    <p><span id="uploadedFilesHeading"></span>
+                    <ul class="mycal-list fileList" id="uploadFileList"></ul>
+
+                </form>
+                <iframe id="mergeFileFrame" src="mergeFiles.html" style="position: absolute;width:0;height:0;border:0;"></iframe>
+
+     <script language="javascript">
+		var mergedFiles = [];
+		var maxAllowedFiles = 2;
+
+		function mergeFiles() {
+            mergedFiles =
+            document.getElementById("mergeFileFrame").contentWindow.merge(mergedFiles, 'files').then((res)=>
+            {
+                    var combinedFiles = res;
+                    if(combinedFiles && combinedFiles.length > 0){
+                        mergedFiles = res;
+                        var output = [];
+
+                        document.getElementById("uploadFileList").innerHTML = "";
+                        document.getElementById("uploadedFilesHeading").innerHTML = "";
+
+                        for (var i = 0, f; f = mergedFiles[i]; i++) {
+                            // add .removeFile class to the li's element to pick them by this selector
+                            var removeLink = "<a class=\"removeFile\" href=\"#\" data-fileid=\"" + i + "\">Remove<span class='mycal-sr-only'> "+f.name+"</span></a>";
+                            var downloadLink = "<a class=\"downloadFile\" href=\"#\" id=downloadFile" + i + "  data-fileid=\"" + i + "\">download<span class='mycal-sr-only'> "+f.name+"</span></a>";
+                            output.push("<li><strong>", f.name, "</strong> - ",
+                                        removeLink, " - ", downloadLink, "</li> ");
+                            //downloadFile(f, f.name,f.type, "downloadFile"+i);
+                        }
+
+                        $j(".fileList")
+                            .append(output.join(""));
+
+                        $j("#uploadedFilesHeading").html("<h3>Files Uploaded</h3>");
+
+                        for (var i = 0, f; f = mergedFiles[i]; i++) {
+                            downloadFile(f, f.name,f.type, "downloadFile"+i);
+                        }
+                    }
+
+            });
+
+            //mergedFiles =  merge(mergedFiles, 'files');
+
+	      }
+
+			$j(".files").change(function (evt) {
+		        mergeFiles();
+			});
+
+			$j(document).on("click",".removeFile", function(e){
+			    e.preventDefault();
+			    var fileName = $j(this).parent().children("strong").text();
+
+			     // loop through the files array and check if the name of that file matches FileName
+			    // and get the index of the match
+			    for(i = 0; i < mergedFiles.length; ++ i){
+			        if(mergedFiles[i].name == fileName){
+			            //console.log("match at: " + i);
+			            // remove the one element at the index where we get a match
+			            mergedFiles.splice(i, 1);
+			        }
+			    }
+
+			    //console.log(filesToUpload);
+			    // remove the <li> element of the removed file from the page DOM
+			    $j(this).parent().remove();
+			    enableFileUpload();
+			    if($j('.fileList li').length == 0){
+			    	$j("#uploadedFiles").html("");
+			    }
+			});
+
+			$j(document).on("click",".submitFile", function(e){
+				var form = document.querySelector('form');
+				var formData = new FormData(form);
+				formData.delete("files");
+				for(i = 0; i < mergedFiles.length; ++ i){
+					formData.append("files", mergedFiles[i]);
+				}
+				disableSubmit();
+				$j.ajax({
+					url: form.action,
+					data: formData,
+					processData: false,
+					contentType: false,
+					type: 'POST',
+					success: function(response){
+						location.href='/psr-web/ept/myprofile/balance/serviceCreditHistoryByFiscalYear.html?__participantId=23389613&__nid=51000&__lnid=510001&partcAccountId=7567691&cid=EPT_SCP_E3';
+					},
+			       	error: function(jqXHR, textStatus, errorThrown)
+			        {
+			        	console.log('Error on saving appointment:', jqXHR, textStatus, errorThrown);
+			        }
+			       });
+			});
+
+			function enableFileUpload() {
+				$j('#files').attr('disabled', false);
+				$j('#files').attr('aria-disabled', false);
+				$j('#files').removeClass('disabled');
+			}
+
+			function disableFileUpload() {
+				$j('#files').attr('disabled', true);
+				$j('#files').attr('aria-disabled', true);
+				$j('#files').addClass('disabled');
+			}
+
+			function disableSubmit()
+			{
+				$j('#btnSubmit').attr('disabled', true);
+	   			$j('#btnSubmit').attr('aria-disabled',true);
+	   			$j('#btnSubmit').addClass('disabled');
+			}
+			function downloadFile(file, filename, type, fileElementId) {
+                 const link = document.getElementById(fileElementId);
+                 if(link){
+                     link.download = filename;
+                     let binaryData = [];
+                     binaryData.push(file);
+                     link.href = URL.createObjectURL(new Blob(binaryData, {type: type}))
+                 }
+              }
+			function download(file, filename, type) {
+                 const link = document.getElementById('link');
+                 link.download = filename;
+                 let binaryData = [];
+                 binaryData.push(file);
+                 link.href = URL.createObjectURL(new Blob(binaryData, {type: type}))
+              }
+		</script>
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+    </div>
+    <script language="javascript">
+		let mergedPdfExist = false;
+        const fileTypeMap = new Map();
+        const fileTypeMapIndex = new Map();
+		async function merge(uploadedFiles, fileElementId) {
+		    if(uploadedFiles && uploadedFiles.length > 0 ){
+		        for (var i = 0; i < uploadedFiles.files.length; i++) {
+		            let currentFile = document.getElementById(fileElementId).files[i];
+	        	    if(currentFile.type.indexOf("pdf") >= 0){
+                        fileTypeMap.set("pdf", currentFile);
+                        fileTypeMapIndex.set("pdf", i);
+                        break;
+	        	    }
+		        }
+		    }
+
+	         let PDFDocument = PDFLib.PDFDocument;
+	         const mergedPdf = await PDFDocument.create();
+	         mergedPdfExist = false;
+	         for (var i = 0; i < document.getElementById(fileElementId).files.length; i++) {
+	        	 let currentFile = document.getElementById(fileElementId).files[i];
+	        	 if(currentFile.type.indexOf("pdf") >= 0){
+	        	    if (!mergedPdfExist && fileTypeMap.has("pdf")){
+	        	        const currentPdf = await PDFDocument.load(await fileTypeMap.get("pdf").arrayBuffer());
+	        		    const copiedPages = await mergedPdf.copyPages(currentPdf, currentPdf.getPageIndices());
+	    	            copiedPages.forEach((page) => mergedPdf.addPage(page));
+	        	    }
+	        		 const currentPdf = await PDFDocument.load(await currentFile.arrayBuffer());
+	        		 const copiedPages = await mergedPdf.copyPages(currentPdf, currentPdf.getPageIndices());
+	    	         copiedPages.forEach((page) => mergedPdf.addPage(page));
+	    	         mergedPdfExist = true;
+	        	 }else{
+	        		 uploadedFiles.push(currentFile);
+	        	 }
+	         }
+	         if(mergedPdfExist){
+		         const mergedPdfContent = await mergedPdf.save();
+		         const mergedBlob = new Blob([mergedPdfContent], {type: 'application/pdf'});
+		         const mergedPdfFile = new File([mergedBlob],'combined.pdf');
+		         download(mergedPdfFile, 'pdf-lib_page_copying_example.pdf', 'application/pdf');
+		         if(fileTypeMapIndex.has("pdf")){
+		            uploadedFiles[fileTypeMapIndex.get("pdf")] = mergedPdfFile;
+		         }else{
+		            uploadedFiles.push(mergedPdfFile);
+		         }
+	         }
+	         mergedFiles = uploadedFiles;
+	         var output = [];
+
+	        for (var i = 0, f; f = mergedFiles[i]; i++) {
+	        	// add .removeFile class to the li's element to pick them by this selector
+				var removeLink = "<a class=\"removeFile\" href=\"#\" data-fileid=\"" + i + "\">Remove<span class='mycal-sr-only'> "+f.name+"</span></a>";
+
+				output.push("<li><strong>", f.name, "</strong> - ",
+				            removeLink, "</li> ");
+			}
+
+		    $j(".fileList")
+		        .append(output.join(""));
+
+		    if($j('.fileList li').length == 1){
+		    	$j("#uploadedFiles").html("<h3>Files Uploaded</h3>");
+		    }
+
+		    if(mergedFiles.length >= maxAllowedFiles){
+	    		disableFileUpload();
+	    	}
+            return uploadedFiles;
+
+		}
+		</script>
+</main>
+
+<br/>
+
+</body>
+</html>
+
