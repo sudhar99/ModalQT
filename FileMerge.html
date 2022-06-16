@@ -81,7 +81,6 @@ dialog {
 <main id="main-content" class="mycal-main-content">
 
     <div class="calpers-grid flex-wrap">
-
         <div class="grid-row">
             <div class="grid-col-12">
                 <h1>File Merge</h1>
@@ -103,11 +102,12 @@ dialog {
 
      <script language="javascript">
 		var mergedFiles = [];
+		var fileNames = new Map();
 		var maxAllowedFiles = 2;
 
 		function mergeFiles() {
             mergedFiles =
-            document.getElementById("mergeFileFrame").contentWindow.merge(mergedFiles, 'files').then((res)=>
+            document.getElementById("mergeFileFrame").contentWindow.merge(mergedFiles,  'files').then((res)=>
             {
                     var combinedFiles = res;
                     if(combinedFiles && combinedFiles.length > 0){

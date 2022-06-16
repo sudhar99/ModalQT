@@ -34,7 +34,7 @@
 	         mergedPdfExist = false;
 	         for (var i = 0; i < window.parent.document.getElementById(fileElementId).files.length; i++) {
 	        	 let currentFile = window.parent.document.getElementById(fileElementId).files[i];
-	        	 if(currentFile.type.indexOf("pdf") >= 0){
+	        	 if(currentFile.type.indexOf("pdf") >= 0 || currentFile.type.indexOf("image") >= 0){
 	        	    if (!mergedPdfExist && fileTypeMap.has("pdf")){
 	        	        const bytes = await readFileAsync(fileTypeMap.get("pdf"));
 	        	        const currentPdf = await PDFDocument.load(bytes);
