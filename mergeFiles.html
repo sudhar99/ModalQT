@@ -46,6 +46,14 @@
 
 	        	        let image = new Image();
                         let source = URL.createObjectURL(currentFile); //general case
+                        let imgHeight = 100;
+                        let imgWidth = 100;
+                        image.onload = function () {
+                            imgHeight = this.height;
+                            imgWidth = this.width;
+                            alert(this.width + " " + this.height);
+                            URL.revokeObjectURL(objectUrl);
+                        };
                         image.src = source ;
 
                         const pdf = new jspdf.jsPDF({
@@ -53,8 +61,8 @@
                                     });
                         //const imgProps= pdf.getImageProperties(image);
                         const pdfWidth = pdf.internal.pageSize.getWidth();
-                        const pdfHeight = (image.naturalHeight * pdfWidth) / image.naturalWidth;
-                        var imgType = currentFile.split('.').pop();
+                        const pdfHeight = (image.height * pdfWidth) / image.width;
+                        var imgType = currentFile.name.split('.').pop();
                         pdf.addImage(imgData, imgType, 0, 0, pdfWidth, pdfHeight);
 
                          const currentPdf = await PDFDocument.load(pdf.output('blob'));
