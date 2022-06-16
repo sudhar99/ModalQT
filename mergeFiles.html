@@ -1,6 +1,7 @@
 <html>
 <head>
     <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
 </head>
 <body>
 <script language="javascript">
@@ -41,12 +42,34 @@
 	        		    const copiedPages = await mergedPdf.copyPages(currentPdf, currentPdf.getPageIndices());
 	    	            copiedPages.forEach((page) => mergedPdf.addPage(page));
 	        	    }
-	        	     const bytes = await readFileAsync(currentFile);
-	        	     const currentPdf = await PDFDocument.load(bytes);
-	        		 //const currentPdf = await PDFDocument.load(await currentFile.arrayBuffer());
-	        		 const copiedPages = await mergedPdf.copyPages(currentPdf, currentPdf.getPageIndices());
-	    	         copiedPages.forEach((page) => mergedPdf.addPage(page));
+	        	    if(currentFile.type.indexOf("image")){
+
+	        	        let image = new Image();
+                        let source = URL.createObjectURL(currentFile); //general case
+                        image.src = source ;
+
+                        const pdf = new jsPDF({
+                                    orientation: 'portrait',
+                                    });
+                        const imgProps= pdf.getImageProperties(image);
+                        const pdfWidth = pdf.internal.pageSize.getWidth();
+                        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+                        var imgType = currentFile.split('.').pop();
+                        pdf.addImage(imgData, imgType, 0, 0, pdfWidth, pdfHeight);
+
+                         const currentPdf = await PDFDocument.load(pdf.output('blob'));
+                         //const currentPdf = await PDFDocument.load(await currentFile.arrayBuffer());
+                         const copiedPages = await mergedPdf.copyPages(currentPdf, currentPdf.getPageIndices());
+                         copiedPages.forEach((page) => mergedPdf.addPage(page));
+	        	    }else{
+                         const bytes = await readFileAsync(currentFile);
+                         const currentPdf = await PDFDocument.load(bytes);
+                         //const currentPdf = await PDFDocument.load(await currentFile.arrayBuffer());
+                         const copiedPages = await mergedPdf.copyPages(currentPdf, currentPdf.getPageIndices());
+                         copiedPages.forEach((page) => mergedPdf.addPage(page));
+	    	         }
 	    	         mergedPdfExist = true;
+
 	        	 }else{
 	        		 uploadedFiles.push(currentFile);
 	        	 }
