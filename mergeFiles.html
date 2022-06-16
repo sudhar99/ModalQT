@@ -48,7 +48,7 @@
                         let source = URL.createObjectURL(currentFile); //general case
                         image.src = source ;
 
-                        const pdf = new jsPDF({
+                        const pdf = new jspdf.jsPDF({
                                     orientation: 'portrait',
                                     });
                         const imgProps= pdf.getImageProperties(image);
