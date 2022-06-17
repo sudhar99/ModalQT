@@ -21,7 +21,7 @@
         function getImageDimension(src){
           return new Promise((resolve, reject) => {
             let img = new Image()
-            img.onload = () => resolve(img.height, img.width)
+            img.onload = () => resolve([img.height, img.width])
             img.onerror = reject
             img.src = src
           })
