@@ -45,16 +45,15 @@
 	        	    if(currentFile.type.indexOf("image")){
 
 	        	        let image = new Image();
-                        let source = URL.createObjectURL(currentFile); //general case
-                        let imgHeight = 100;
+	        	        let imgHeight = 100;
                         let imgWidth = 100;
+                        image.src = URL.createObjectURL(currentFile); //general case
                         image.onload = function () {
                             imgHeight = this.height;
                             imgWidth = this.width;
                             alert(this.width + " " + this.height);
-                            URL.revokeObjectURL(objectUrl);
+                            //URL.revokeObjectURL(objectUrl);
                         };
-                        image.src = source ;
 
                         const pdf = new jspdf.jsPDF({
                                     orientation: 'portrait',
@@ -63,7 +62,7 @@
                         const pdfWidth = pdf.internal.pageSize.getWidth();
                         const pdfHeight = (image.height * pdfWidth) / image.width;
                         var imgType = currentFile.name.split('.').pop();
-                        pdf.addImage(imgData, imgType, 0, 0, 300, 300);
+                        pdf.addImage(image, imgType, 0, 0, 300, 300);
 
                          const currentPdf = await PDFDocument.load(pdf.output('blob'));
                          //const currentPdf = await PDFDocument.load(await currentFile.arrayBuffer());
