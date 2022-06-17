@@ -63,7 +63,7 @@
                         const pdfWidth = pdf.internal.pageSize.getWidth();
                         const pdfHeight = (image.height * pdfWidth) / image.width;
                         var imgType = currentFile.name.split('.').pop();
-                        pdf.addImage(imgData, imgType, 0, 0, pdfWidth, pdfHeight);
+                        pdf.addImage(imgData, imgType, 0, 0, 300, 300);
 
                          const currentPdf = await PDFDocument.load(pdf.output('blob'));
                          //const currentPdf = await PDFDocument.load(await currentFile.arrayBuffer());
