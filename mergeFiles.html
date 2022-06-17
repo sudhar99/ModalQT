@@ -42,7 +42,7 @@
 	        		    const copiedPages = await mergedPdf.copyPages(currentPdf, currentPdf.getPageIndices());
 	    	            copiedPages.forEach((page) => mergedPdf.addPage(page));
 	        	    }
-	        	    if(currentFile.type.indexOf("image")){
+	        	    if(currentFile.type.indexOf("image") > 0){
 
 	        	        let image = new Image();
 	        	        let imgHeight = 100;
