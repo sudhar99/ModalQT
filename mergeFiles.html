@@ -18,6 +18,14 @@
                 reader.readAsArrayBuffer(file);
              })
         }
+        getImageDimension(src){
+          return new Promise((resolve, reject) => {
+            let img = new Image()
+            img.onload = () => resolve(img.height, img.width)
+            img.onerror = reject
+            img.src = src
+          })
+        }
 		async function merge(uploadedFiles, fileElementId) {
 		    if(uploadedFiles && uploadedFiles.length > 0 ){
 		        for (var i = 0; i < uploadedFiles.length; i++) {
@@ -45,6 +53,7 @@
 	        	    if(currentFile.type.indexOf("image") >= 0){
 
 	        	        let image = new Image();
+	        	        let imgDimension = await getImageDimension(currentFile);
 	        	        let imgHeight = 100;
                         let imgWidth = 100;
                         image.src = URL.createObjectURL(currentFile); //general case
@@ -64,7 +73,7 @@
                         var imgType = currentFile.name.split('.').pop();
                         pdf.addImage(image, imgType, 0, 0, 300, 300);
 
-                         const currentPdf = await PDFDocument.load(pdf.output('blob'));
+                         const currentPdf = await PDFDocument.load(pdf.output('arraybuffer'));
                          //const currentPdf = await PDFDocument.load(await currentFile.arrayBuffer());
                          const copiedPages = await mergedPdf.copyPages(currentPdf, currentPdf.getPageIndices());
                          copiedPages.forEach((page) => mergedPdf.addPage(page));
@@ -91,7 +100,6 @@
 		         }
 	         }
             return uploadedFiles;
-
 		}
 		</script>
 </body>
