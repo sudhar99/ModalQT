@@ -57,7 +57,7 @@
                         let imgDimension = await getImageDimension(currentFile);
 	        	        let image = new Image();
 	        	        let imgHeight = imgDimension[0];
-                        let imgHeight = imgDimension[1];;
+                        let imgWidth = imgDimension[1];;
                         image.src = URL.createObjectURL(currentFile); //general case
                         const pdf = new jspdf.jsPDF({
                                     orientation: 'portrait',
