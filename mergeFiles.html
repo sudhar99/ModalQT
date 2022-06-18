@@ -23,7 +23,7 @@
             let img = new Image()
             img.onload = () => {
                 window.URL.revokeObjectURL( img.src );
-                resolve(img.height)
+                resolve([img.height, img.width])
             }
             img.onerror = reject
             img.src = window.URL.createObjectURL( src );
@@ -56,24 +56,22 @@
 	        	    if(currentFile.type.indexOf("image") >= 0){
                         let imgDimension = await getImageDimension(currentFile);
 	        	        let image = new Image();
-	        	        let imgHeight = 100;
-                        let imgWidth = 100;
+	        	        let imgHeight = imgDimension[0];
+                        let imgHeight = imgDimension[1];;
                         image.src = URL.createObjectURL(currentFile); //general case
-                        image.onload = function () {
-                            imgHeight = this.height;
-                            imgWidth = this.width;
-                            alert(this.width + " " + this.height);
-                            //URL.revokeObjectURL(objectUrl);
-                        };
-
                         const pdf = new jspdf.jsPDF({
                                     orientation: 'portrait',
                                     });
-                        //const imgProps= pdf.getImageProperties(image);
                         const pdfWidth = pdf.internal.pageSize.getWidth();
-                        const pdfHeight = (image.height * pdfWidth) / image.width;
+                        const pdfHeight = pdf.internal.pageSize.getWidth();
+                        if(imgWidth > pdfWidth){
+                            imgWidth = pdfWidth;
+                        }
+                        if(imgHeight > pdfHeight){
+                            imgHeight = pdfHeight;
+                        }
                         var imgType = currentFile.name.split('.').pop();
-                        pdf.addImage(image, imgType, 0, 0, 300, 300);
+                        pdf.addImage(image, imgType, 0, 0, imgWidth, imgHeight);
 
                          const currentPdf = await PDFDocument.load(pdf.output('arraybuffer'));
                          //const currentPdf = await PDFDocument.load(await currentFile.arrayBuffer());
