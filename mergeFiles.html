@@ -62,13 +62,13 @@
                         let pdf = new jspdf.jsPDF('l', 'mm', 'a4');
                         //const pdfWidth = pdf.internal.pageSize.getWidth();
                         //const pdfHeight = pdf.internal.pageSize.getHeight();
-                        /*const pageRatio = pageWidth / pageHeight;
-                        if(imgWidth > pdfWidth){
-                            imgWidth = pdfWidth;
-                        }
-                        if(imgHeight > pdfHeight){
-                            imgHeight = pdfHeight;
-                        }*/
+                        //const pageRatio = pageWidth / pageHeight;
+                        //if(imgWidth > pdfWidth){
+                        //    imgWidth = pdfWidth;
+                        //}
+                        //if(imgHeight > pdfHeight){
+                        //    imgHeight = pdfHeight;
+                        //}
                         var imgType = currentFile.name.split('.').pop();
                         //pdf.addImage(image, imgType, 0, 0, imgWidth, imgHeight);
                         pdf.addImage(image, imgType, 0, 0);
