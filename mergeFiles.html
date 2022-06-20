@@ -59,9 +59,10 @@
 	        	        let imgHeight = imgDimension[0];
                         let imgWidth = imgDimension[1];;
                         image.src = URL.createObjectURL(currentFile); //general case
-                        const pdf = new jspdf.jsPDF({
-                                    orientation: 'portrait',
-                                    });
+                        let pdf = new jsPDF('l', 'mm', 'a4');
+                        const pageWidth = pdf.internal.pageSize.getWidth();
+                        const pageHeight = pdf.internal.pageSize.getHeight();
+                        const pageRatio = pageWidth / pageHeight;
                         const pdfWidth = pdf.internal.pageSize.getWidth();
                         const pdfHeight = pdf.internal.pageSize.getWidth();
                         if(imgWidth > pdfWidth){
