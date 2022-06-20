@@ -54,14 +54,14 @@
 	    	            copiedPages.forEach((page) => mergedPdf.addPage(page));
 	        	    }
 	        	    if(currentFile.type.indexOf("image") >= 0){
-                        let imgDimension = await getImageDimension(currentFile);
+                        //let imgDimension = await getImageDimension(currentFile);
 	        	        let image = new Image();
-	        	        let imgHeight = imgDimension[0];
-                        let imgWidth = imgDimension[1];;
+	        	        //let imgHeight = imgDimension[0];
+                        //let imgWidth = imgDimension[1];;
                         image.src = URL.createObjectURL(currentFile); //general case
-                        let pdf = new jspdf.jsPDF('p', 'px');
-                        const pdfWidth = pdf.internal.pageSize.getWidth();
-                        const pdfHeight = pdf.internal.pageSize.getHeight();
+                        let pdf = new jspdf.jsPDF('p', 'px', 'a4');
+                        //const pdfWidth = pdf.internal.pageSize.getWidth();
+                        //const pdfHeight = pdf.internal.pageSize.getHeight();
                         //const pageRatio = pageWidth / pageHeight;
                         //if(imgWidth > pdfWidth){
                         //    imgWidth = pdfWidth;
